@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mongodb'),
+    'default' => 'mongodb',
 
     /*
     |--------------------------------------------------------------------------
@@ -95,7 +95,7 @@ return [
 
         'mongodb' => [
             'driver' => 'mongodb',
-            'dsn' => env('DB_URI', 'mongodb+srv://EPIHELP: hMZh2kgzdxXYuPd @cluster0.oznpxi5.mongodb.net/?retryWrites=true&w=majority'),
+            'dsn' => 'mongodb+srv://EPIHELP: hMZh2kgzdxXYuPd @cluster0.oznpxi5.mongodb.net/?retryWrites=true&w=majority',
             'database' => 'epihelpdb',
     ],
 
