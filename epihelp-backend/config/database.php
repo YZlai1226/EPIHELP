@@ -14,8 +14,8 @@ return [
     | you may use many connections at once using the Database library.
     |
     */
-
-    'default' => 'mongodb',
+    
+    'default' => env('DB_CONNECTION', 'mongodb'),
 
     /*
     |--------------------------------------------------------------------------
@@ -95,7 +95,7 @@ return [
 
         'mongodb' => [
             'driver' => 'mongodb',
-            'dsn' => 'mongodb+srv://EPIHELP: hMZh2kgzdxXYuPd @cluster0.oznpxi5.mongodb.net/?retryWrites=true&w=majority',
+            'dsn' => env('DB_URI', 'mongodb+srv://epihelpuser2:3tIqvvoQLcvsiPIT@cluster0.mwfqm.mongodb.net/?retryWrites=true&w=majority'),
             'database' => 'epihelpdb',
     ],
 
