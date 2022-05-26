@@ -20,7 +20,10 @@ const Navigation = ({ user }) => {
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
               <Link to="/dashboard">
-                <ApplicationLogo className="block h-10 w-auto fill-current text-gray-600" />
+                {/* <ApplicationLogo className="block h-10 w-auto fill-current text-gray-600" /> */}
+              <h1>
+                Epihelp
+              </h1>
               </Link>
             </div>
             {/* Navigation Links */}
