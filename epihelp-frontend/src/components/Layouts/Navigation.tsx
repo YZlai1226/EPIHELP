@@ -1,13 +1,16 @@
-import ApplicationLogo from 'components/ApplicationLogo'
-import Dropdown from 'components/Dropdown'
-import ResponsiveNavLink, { ResponsiveNavButton } from 'components/ResponsiveNavLink'
-import { DropdownButton } from 'components/DropdownLink'
-import { useAuth } from 'hooks/auth'
+import Dropdown from './../Dropdown'
+import ResponsiveNavLink, { ResponsiveNavButton } from './../ResponsiveNavLink'
+import { DropdownButton } from './../DropdownLink'
+import { useAuth } from './../../hooks/auth'
 import { useState } from 'react'
-import CustomNavLink from 'components/NavLink';
-import {Link} from 'react-router-dom';
+import CustomNavLink from './../NavLink';
+import { Link } from 'react-router-dom';
+import { User } from './../../models/user';
 
-const Navigation = ({ user }) => {
+interface NavigationProps {
+  user: User
+}
+const Navigation: React.FC<NavigationProps> = ({ user }) => {
   const { logout } = useAuth()
   const [open, setOpen] = useState(false)
 
@@ -21,9 +24,9 @@ const Navigation = ({ user }) => {
             <div className="flex-shrink-0 flex items-center">
               <Link to="/dashboard">
                 {/* <ApplicationLogo className="block h-10 w-auto fill-current text-gray-600" /> */}
-              <h1>
-                Epihelp
-              </h1>
+                <h1>
+                  Epihelp
+                </h1>
               </Link>
             </div>
             {/* Navigation Links */}
@@ -39,7 +42,7 @@ const Navigation = ({ user }) => {
           <div className="hidden sm:flex sm:items-center sm:ml-6">
             <Dropdown
               align="right"
-              width="48"
+              width={48}
               trigger={
                 <button className="flex items-center text-sm font-medium
                  text-gray-500 hover:text-gray-700 focus:outline-none

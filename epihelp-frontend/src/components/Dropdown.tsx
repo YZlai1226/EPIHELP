@@ -1,14 +1,22 @@
 import React from 'react'
 import { Menu, Transition } from '@headlessui/react'
 
-const Dropdown = ({
+interface DropdownProps {
+align: string;
+width: number | string;
+contentClasses?: string;
+trigger: React.ReactElement; 
+
+}
+
+const Dropdown: React.FC<DropdownProps> = ({
   align = 'right',
   width = 48,
   contentClasses = 'py-1 bg-white',
   trigger,
   children
 }) => {
-  let alignmentClasses
+  let alignmentClasses: string
 
   switch (width) {
     case '48':

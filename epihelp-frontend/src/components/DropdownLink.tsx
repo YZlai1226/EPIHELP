@@ -1,7 +1,8 @@
 import { Menu } from '@headlessui/react'
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const DropdownLink = ({ children, ...props }) => (
+const DropdownLink: React.FC = ({ children, ...props }) => (
   <Menu.Item>{({ active }) => (
     <NavLink
       {...props}
@@ -14,7 +15,7 @@ const DropdownLink = ({ children, ...props }) => (
   </Menu.Item>
 )
 
-export const DropdownButton = ({ children, ...props }) => (
+export const DropdownButton: React.FC = ({ children, ...props }) => (
   <Menu.Item>
     {({ active }) => (
       <button

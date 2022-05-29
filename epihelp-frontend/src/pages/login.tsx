@@ -1,12 +1,12 @@
-import ApplicationLogo from 'components/ApplicationLogo'
-import AuthCard from 'components/AuthCard'
-import AuthSessionStatus from 'components/AuthSessionStatus'
-import AuthValidationErrors from 'components/AuthValidationErrors'
-import Button from 'components/Button'
-import GuestLayout from 'components/Layouts/GuestLayout'
-import Input from 'components/Input'
-import Label from 'components/Label'
-import { useAuth } from 'hooks/auth'
+import ApplicationLogo from './../components/ApplicationLogo'
+import AuthCard from './../components/AuthCard'
+import AuthSessionStatus from './../components/AuthSessionStatus'
+import AuthValidationErrors from './../components/AuthValidationErrors'
+import Button from './../components/Button'
+import GuestLayout from './../components/Layouts/GuestLayout'
+import Input from './../components/Input'
+import Label from './../components/Label'
+import { useAuth } from './../hooks/auth'
 import { useState } from 'react'
 import { Link, NavLink} from 'react-router-dom';
 
@@ -22,7 +22,7 @@ const Login = () => {
   const [errors, setErrors] = useState([])
   const [status, setStatus] = useState(null)
 
-  const submitForm = async event => {
+  const submitForm: React.FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault()
     login({ email, password, setErrors, setStatus })
   }

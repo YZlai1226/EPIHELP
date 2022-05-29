@@ -1,4 +1,8 @@
-const Button = ({ type = 'submit', className, ...props }) => (
+import React from 'react'
+
+type ButtonProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
+
+const Button: React.FC<ButtonProps> = ({ type = 'submit', className, ...props }) => (
   <button
     type={type}
     className={`${className} inline-flex items-center px-4 

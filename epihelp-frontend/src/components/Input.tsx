@@ -1,4 +1,8 @@
-const Input = ({ disabled = false, className, ...props }) => (
+import React from 'react'
+
+type InputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+
+const Input: React.FC<InputProps> = ({ disabled = false, className, ...props }) => (
   <input
     disabled={disabled}
     className={`${className} rounded-md shadow-sm border-gray-300

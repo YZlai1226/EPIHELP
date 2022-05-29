@@ -1,18 +1,18 @@
-import ApplicationLogo from 'components/ApplicationLogo'
-import AuthCard from 'components/AuthCard'
-import AuthSessionStatus from 'components/AuthSessionStatus'
-import AuthValidationErrors from 'components/AuthValidationErrors'
-import Button from 'components/Button'
-import GuestLayout from 'components/Layouts/GuestLayout'
-import Input from 'components/Input'
-import Label from 'components/Label'
-import { useAuth } from 'hooks/auth'
+import ApplicationLogo from './../components/ApplicationLogo'
+import AuthCard from './../components/AuthCard'
+import AuthSessionStatus from './../components/AuthSessionStatus'
+import AuthValidationErrors from './../components/AuthValidationErrors'
+import Button from './../components/Button'
+import GuestLayout from './../components/Layouts/GuestLayout'
+import Input from './../components/Input'
+import Label from './../components/Label'
+import { useAuth } from './../hooks/auth'
 import { useEffect, useState } from 'react'
 import {Link, useParams} from 'react-router-dom';
 
-const PasswordReset = () => {
+const PasswordReset: React.FC = () => {
   const params = useParams()
-  const { resetPassword } = useAuth({ middleware: 'guest' })
+  const { resetPassword } = useAuth({ middleware: 'guest', redirectIfAuthenticated: undefined })
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -20,7 +20,7 @@ const PasswordReset = () => {
   const [errors, setErrors] = useState([])
   const [status, setStatus] = useState(null)
 
-  const submitForm = event => {
+  const submitForm: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault()
     resetPassword({
       email,

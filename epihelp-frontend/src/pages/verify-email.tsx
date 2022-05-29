@@ -1,14 +1,15 @@
-import ApplicationLogo from 'components/ApplicationLogo'
-import AuthCard from 'components/AuthCard'
-import Button from 'components/Button'
-import GuestLayout from 'components/Layouts/GuestLayout'
-import { useAuth } from 'hooks/auth'
+import ApplicationLogo from './../components/ApplicationLogo'
+import AuthCard from './../components/AuthCard'
+import Button from './../components/Button'
+import GuestLayout from './../components/Layouts/GuestLayout'
+import { useAuth } from './../hooks/auth'
 import { useState } from 'react'
 import {Link} from 'react-router-dom';
 
 const VerifyEmail = () => {
   const { logout, resendEmailVerification } = useAuth({
-    middleware: 'auth'
+    middleware: 'auth',
+    redirectIfAuthenticated: undefined
   })
   const [status, setStatus] = useState(null)
 

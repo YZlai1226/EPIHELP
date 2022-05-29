@@ -1,4 +1,8 @@
-const ApplicationLogo = props => (
+import React from 'react'
+
+type ApplicationLogoProps = React.SVGProps<SVGSVGElement>;
+
+const ApplicationLogo: React.FC<ApplicationLogoProps> = (props) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170.96 159.93" {...props}>
     <path
       //eslint-disable-next-line max-len
