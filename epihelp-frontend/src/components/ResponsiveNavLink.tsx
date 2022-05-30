@@ -1,9 +1,11 @@
-import {NavLink} from 'react-router-dom';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-const ResponsiveNavLink = ({children, ...props }) => (
+const ResponsiveNavLink: React.FC = ({ children, ...props }) => (
   <NavLink
+    to={''}
     {...props}
-    className={({isActive}) => (isActive
+    className={({ isActive }) => (isActive
       ? 'block pl-3 pr-4 py-2 border-l-4 text-base font-medium ' +
       'leading-5 focus:outline-none transition duration-150 ease-in-out ' +
       'border-indigo-400 text-indigo-700 bg-indigo-50 focus:text-indigo-800' +
@@ -18,7 +20,7 @@ const ResponsiveNavLink = ({children, ...props }) => (
   </NavLink>
 )
 
-export const ResponsiveNavButton = props => (
+export const ResponsiveNavButton: React.FC = props => (
   <button
     className="block w-full pl-3 pr-4 py-2 border-l-4
      text-left text-base font-medium leading-5 focus:outline-none

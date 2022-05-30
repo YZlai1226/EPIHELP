@@ -1,18 +1,18 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
+    './src/**/*.{js,jsx,ts,tsx}'
   ],
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+        sans: ['Nunito', ...defaultTheme.fontFamily.sans]
       },
-      opacity: ['disabled'],
-    },
+      opacity: ['disabled']
+    }
   },
   plugins: [
     require('@tailwindcss/forms')
-  ],
+  ]
 }
