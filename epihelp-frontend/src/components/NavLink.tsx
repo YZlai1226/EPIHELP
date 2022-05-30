@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink, To } from 'react-router-dom';
-
-interface NavLinkProps {
-  to: To,
-}
+import { NavLinkProps } from './../models/NavLinkProps'
+// interface NavLinkProps {
+//   to: To,
+// }
 
 const CustomNavLink: React.FC<NavLinkProps> = ({ children, ...props }) => (
   <NavLink {...props}
