@@ -30,9 +30,7 @@ const Register = () => {
     <GuestLayout>
       <AuthCard
         logo={
-          <Link to="/">
-            <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
-          </Link>
+          <img src="https://svgshare.com/i/ht1.svg" />
         }>
         {/* Validation Errors */}
         <AuthValidationErrors className="mb-4" errors={errors} />
