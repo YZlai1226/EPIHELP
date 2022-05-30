@@ -20,7 +20,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Post::all());
     }
 
     /**
@@ -31,7 +31,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -40,9 +40,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        return $post;
     }
 
     /**
