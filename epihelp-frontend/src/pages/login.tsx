@@ -6,7 +6,7 @@ import Button from './../components/Button'
 import GuestLayout from './../components/Layouts/GuestLayout'
 import Input from './../components/Input'
 import Label from './../components/Label'
-import { useAuth } from './../hooks/auth'
+import { useAuth } from './../hooks/auth.js'
 import { useState } from 'react'
 import { Link, NavLink} from 'react-router-dom';
 

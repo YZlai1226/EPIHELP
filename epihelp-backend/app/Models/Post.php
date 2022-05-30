@@ -9,5 +9,14 @@ class Post extends Model
 {
     // use HasFactory;
     protected $connection = 'mongodb';
+
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
 

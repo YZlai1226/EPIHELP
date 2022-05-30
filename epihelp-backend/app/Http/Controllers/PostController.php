@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Http\Resources\PostResource;
 
 class PostController extends Controller
 {
@@ -20,7 +21,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Post::all());
     }
 
     /**
@@ -31,7 +32,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -40,9 +41,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        $post = new PostResource(Post::find($id));
+
+        return $post;
     }
 
     /**
