@@ -14,7 +14,7 @@ class Comment extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -33,8 +33,8 @@ class Comment extends Controller
         
         $comment->save();
 
-        $post = Post::find(post_id);
-        //insert comment_id into comment array
+        $post = Post::find($request->post_id);
+        // insert comment_id into comment array of the post
 
         return response()->json($comment, 201);
     }

@@ -31,9 +31,7 @@ const Login = () => {
     <GuestLayout>
       <AuthCard
         logo={
-          <Link to="/">
-            <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
-          </Link>
+          <img src="https://svgshare.com/i/ht1.svg" />
         }>
         {/* Session Status */}
         <AuthSessionStatus className="mb-4" status={status} />
