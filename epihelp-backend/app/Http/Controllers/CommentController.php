@@ -24,7 +24,18 @@ class Comment extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $comment = new Comment;
+
+        $comment->user_id = $request->user_id;
+        $comment->post_id = $request->post_id;
+        $comment->content = $request->content;
+        
+        $comment->save();
+
+        $post = Post::find(post_id);
+        //insert comment_id into comment array
+
+        return response()->json($comment, 201);
     }
 
     /**
@@ -35,7 +46,9 @@ class Comment extends Controller
      */
     public function show($id)
     {
-        //
+        $post = new PostResource(Post::find($id));
+
+        return $post;
     }
 
     /**
