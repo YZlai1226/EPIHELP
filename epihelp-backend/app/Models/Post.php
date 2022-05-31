@@ -11,6 +11,14 @@ class Post extends Model
 {
     // use HasFactory;
     protected $connection = 'mongodb';
+    protected $collection = 'posts';
+    protected $fillable = [
+        'title',
+        'content',
+        'category',
+        'user',
+        'comments' => []
+    ];
 
     public function user()
     {

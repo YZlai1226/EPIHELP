@@ -10,6 +10,8 @@ class Category extends Model
     protected $collection = 'categories';
     
     protected $fillable = [
-        'name', 'image','description'
+        'name',
+        'image',
+        'description'
     ];
 }
