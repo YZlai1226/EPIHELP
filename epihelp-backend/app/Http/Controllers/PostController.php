@@ -8,13 +8,7 @@ use App\Http\Resources\PostResource;
 
 class PostController extends Controller
 {
-//    public function show($slug)
-//    {
-//        return view('post', [
-//            'post' => Post::where('slug', '=', $slug)->first()
-//        ]);
-//    }
-/**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -37,7 +31,6 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        
     }
 
     /**
@@ -60,10 +53,14 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $post->update($request->all());
+        $post->save();
+
+        return response()->json($post, 201);
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -71,9 +68,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return response()->json($post, 201);
     }
-
 }

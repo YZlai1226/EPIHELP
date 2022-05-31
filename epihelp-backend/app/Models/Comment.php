@@ -7,5 +7,10 @@ use Jenssegers\Mongodb\Eloquent\Model;
 
 class Comment extends Model
 {
-    use HasFactory;
+    protected $connection = 'mongodb';
+    protected $collection = 'comments';
+    
+    protected $fillable = [
+        'content', 'user_id','post_id'
+    ];
 }

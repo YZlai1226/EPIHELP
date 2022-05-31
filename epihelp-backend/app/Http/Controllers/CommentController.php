@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Comment;
+use App\Http\Controllers\PostController;
 
-class Comment extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,7 @@ class Comment extends Controller
      */
     public function index()
     {
-        
+        return response()->json(Comment::all());   
     }
 
     /**
@@ -34,9 +36,13 @@ class Comment extends Controller
         $comment->save();
 
         $post = Post::find($request->post_id);
-        // insert comment_id into comment array of the post
+        $post->push('comments', $comment->id);
 
         return response()->json($comment, 201);
+    }
+
+    public function insertCommentIdInPost($comment_id) {
+
     }
 
     /**
@@ -57,9 +63,12 @@ class Comment extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comment $comment)
     {
-        //
+        $comment->update($request->all());
+        $comment->save();
+
+        return response()->json($comment, 201);
     }
 
     /**
@@ -68,8 +77,13 @@ class Comment extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
+        $post = Post::find($comment->post_id);
+        if (($key = array_search($comment->id, $post)) !== false) {
+            unset($post[$key]);
+        }
+        return response()->json($comment, 201); 
     }
 }
