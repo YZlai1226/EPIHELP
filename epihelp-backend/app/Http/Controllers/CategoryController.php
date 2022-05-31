@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -13,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Category::all());
     }
 
     /**
@@ -21,10 +22,18 @@ class CategoryController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function store(Request $request)
     {
-        //
+        $category = new Category();
+
+        $category->name = $request->name;
+        $category->image = $request->image;
+        $category->description = $request->description;
+        
+        $category->save();
+
+        return response()->json($category, 201);
     }
 
     /**
@@ -33,9 +42,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        //
+        return $category;
     }
 
     /**
@@ -45,9 +54,12 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $category->update($request->all());
+        $category->save();
+
+        return response()->json($category, 201);
     }
 
     /**
@@ -56,8 +68,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return response()->json($category, 201); 
     }
 }
