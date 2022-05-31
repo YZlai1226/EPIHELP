@@ -17,7 +17,7 @@ class Post extends Model
         'content',
         'category',
         'user',
-        'comments' => []
+        'comments'
     ];
 
     public function user()

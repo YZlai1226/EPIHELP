@@ -36,6 +36,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->content = $request->content;
         $post->category = $request->category;
+        $post->user_id = $request->user_id;
         $post->save();
 
         return response()->json($post, 201);
