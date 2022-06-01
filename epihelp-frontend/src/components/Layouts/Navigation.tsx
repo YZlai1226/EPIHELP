@@ -31,15 +31,25 @@ const Navigation: React.FC<NavigationProps> = ({ user }) => {
             </div>
             {/* Navigation Links */}
             <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-              <CustomNavLink
+              {/* <CustomNavLink
                 to='/categories'
               >
                 Categories
-              </CustomNavLink>
+              </CustomNavLink> */}
               <CustomNavLink
                 to='/profile'
               >
                 Profile
+              </CustomNavLink>
+              <CustomNavLink
+                to='/admin'
+              >
+                Admin
+              </CustomNavLink>
+              <CustomNavLink
+                to='/livechat'
+              >
+                Live Chat
               </CustomNavLink>
             </div>
           </div>
@@ -117,6 +127,13 @@ const Navigation: React.FC<NavigationProps> = ({ user }) => {
               to="/categories"
             >
               Dashboard
+            </ResponsiveNavLink>
+          </div>
+          <div className="pt-2 pb-3 space-y-1">
+            <ResponsiveNavLink
+              to="/profile"
+            >
+              Profile
             </ResponsiveNavLink>
           </div>
           {/* Responsive Settings Options */}

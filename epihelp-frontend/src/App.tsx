@@ -5,6 +5,7 @@ import Categories from './pages/categories';
 import Category from './pages/category';
 import Post from './pages/post';
 import Profile from './pages/profile';
+import LiveChat from './pages/livechat';
 import Admin from './pages/admin';
 import Login from './pages/login';
 import Register from './pages/register';
@@ -27,6 +28,7 @@ function App() {
         <Route path="/post/:post" element={<Post />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/livechat" element={<LiveChat />} />
         <Route path="*" element={<NotFoundPage />}
         
         />
