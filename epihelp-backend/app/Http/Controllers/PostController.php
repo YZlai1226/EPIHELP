@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Category;
 use App\Http\Resources\PostResource;
 
 class PostController extends Controller
@@ -18,9 +19,9 @@ class PostController extends Controller
         return response()->json(Post::all());
     }
 
-    public function getAllByCategory($id)
+    public function getPostsByCategory(Category $category)
     {
-        return response()->json(Post::where("category_id", "=", $id));
+        return response()->json(Post::where("category_id", "=", $category));
     }
 
     /**
