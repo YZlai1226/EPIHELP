@@ -7,7 +7,7 @@ import { NavLinkProps } from './../models/NavLinkProps'
 
 const CustomNavLink: React.FC<NavLinkProps> = ({ children, ...props }) => (
   <NavLink {...props}
-    to={''}
+    to={props.to}
     className={({ isActive }) => (isActive
       ? 'inline-flex items-center px-1 pt-1 border-b-2 ' +
       'text-sm font-medium leading-5 focus:outline-none transition ' +
