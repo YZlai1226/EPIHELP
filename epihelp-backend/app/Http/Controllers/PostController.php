@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\User;
 use App\Http\Resources\PostResource;
 
 class PostController extends Controller
@@ -36,9 +37,12 @@ class PostController extends Controller
 
         $post->title = $request->title;
         $post->content = $request->content;
-        $post->category = $request->category;
+        $post->category_id = $request->category_id;
         $post->user_id = $request->user_id;
         $post->save();
+
+        $user = User::find($request->user_id);
+        $user->push('posts', $post->id);
 
         return response()->json($post, 201);
     }
@@ -80,6 +84,9 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
+        $user = User::find($post->user_id);
+        $user->pull('posts', $post->id);
+
         return response()->json($post, 201);
     }
 }
