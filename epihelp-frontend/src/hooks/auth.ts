@@ -1,13 +1,22 @@
 import useSWR from 'swr'
-import axios from 'axios'
-import React, {useEffect} from 'react'
-import {useNavigate, useParams} from 'react-router-dom';
+import React, { useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
+import { User } from './../models/user';
+import Axios from 'axios'
 
-export const useAuth = ({middleware, redirectIfAuthenticated}: any = {}) => {
+export const useAuth = ({ middleware, redirectIfAuthenticated }: any = {}) => {
   let navigate = useNavigate();
   let params = useParams();
+  
+  const axios = Axios.create({
+    baseURL: 'http://localhost:8000',
+    headers: {
+      'X-Requested-With': 'XMLHttpRequest'
+    },
+    withCredentials: true
+  });
 
-  const {data: user, error, mutate} = useSWR('/api/user', () =>
+  const { data: user, error, mutate } = useSWR('/api/user', () =>
     axios
       .get('/api/user')
       .then(res => res.data)
@@ -24,7 +33,7 @@ export const useAuth = ({middleware, redirectIfAuthenticated}: any = {}) => {
 
   const csrf = () => axios.get('/sanctum/csrf-cookie')
 
-  const register = async ({setErrors, ...props}: any) => {
+  const register = async ({ setErrors, ...props }: any) => {
     await csrf()
     setErrors([])
     axios
@@ -36,12 +45,16 @@ export const useAuth = ({middleware, redirectIfAuthenticated}: any = {}) => {
       })
   }
 
-  const login = async ({setErrors, setStatus, ...props}: any) => {
+  const login = async ({ setErrors, setStatus, ...props }: any) => {
     await csrf()
     setErrors([])
     setStatus(null)
+
     axios
-      .post('/login', props)
+      .post('/login', props, {
+        headers: { 'X-Requested-With': 'XMLHttpRequest' },
+        withCredentials: true
+      })
       .then(() => mutate())
       .catch(error => {
         if (error.response.status !== 422) throw error
@@ -49,12 +62,12 @@ export const useAuth = ({middleware, redirectIfAuthenticated}: any = {}) => {
       })
   }
 
-  const forgotPassword = async ({setErrors, setStatus, email}: any) => {
+  const forgotPassword = async ({ setErrors, setStatus, email }: any) => {
     await csrf()
     setErrors([])
     setStatus(null)
     axios
-      .post('/forgot-password', {email})
+      .post('/forgot-password', { email })
       .then(response => setStatus(response.data.status))
       .catch(error => {
         if (error.response.status !== 422) throw error
@@ -62,20 +75,20 @@ export const useAuth = ({middleware, redirectIfAuthenticated}: any = {}) => {
       })
   }
 
-  const resetPassword = async ({setErrors, setStatus, ...props}: any) => {
+  const resetPassword = async ({ setErrors, setStatus, ...props }: any) => {
     await csrf()
     setErrors([])
     setStatus(null)
     axios
-      .post('/reset-password', {token: params.token, ...props})
-      .then(response => navigate(`/login?reset=${  btoa(response.data.status)}`))
+      .post('/reset-password', { token: params.token, ...props })
+      .then(response => navigate(`/login?reset=${btoa(response.data.status)}`))
       .catch(error => {
         if (error.response.status !== 422) throw error
         setErrors(Object.values(error.response.data.errors).flat())
       })
   }
 
-  const resendEmailVerification = ({setStatus}: any) => {
+  const resendEmailVerification = ({ setStatus }: any) => {
     axios
       .post('/email/verification-notification')
       .then(response => setStatus(response.data.status))
