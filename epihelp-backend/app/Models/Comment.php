@@ -15,4 +15,16 @@ class Comment extends Model
         'user_id',
         'post_id'
     ];
+    protected $casts = [
+        'post_id' => 'string',
+        'user_id' => 'string'
+    ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function post()
+    {
+        return $this->belongsTo(Post::class);
+    }
 }

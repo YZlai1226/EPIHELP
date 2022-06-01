@@ -81,9 +81,7 @@ class CommentController extends Controller
     {
         $comment->delete();
         $post = Post::find($comment->post_id);
-        if (($key = array_search($comment->id, $post)) !== false) {
-            unset($post[$key]);
-        }
+        $post->pull('comments', $comment->id);
         return response()->json($comment, 201); 
     }
 }
