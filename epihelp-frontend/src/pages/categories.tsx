@@ -1,10 +1,10 @@
 import AppLayout from './../components/Layouts/AppLayout'
 
-const Dashboard = () => (
+const Categories = () => (
   <AppLayout
     header={
       <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-        Dashboard
+        Categories
       </h2>
     }>
     <div className="py-12">
@@ -19,4 +19,4 @@ const Dashboard = () => (
   </AppLayout>
 )
 
-export default Dashboard
+export default Categories
