@@ -3,10 +3,9 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Resources\PostResource;
-use App\Http\Resources\CommentResource;
+use App\Http\Resources\PostSummary;
 
-class UserResource extends JsonResource
+class CategoryResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,12 +17,11 @@ class UserResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'email' => $this->email,
-            'password' => $this->password,
-            'posts' => PostResource::collection($this->posts),
-            'comments' => CommentResource::collection($this->comments),
-            //'color' => $this->color,
+            'name' => $this->name,  
+            'description' => $this->description,
+            'image_url' => $this->image,
+            'posts' => PostSummary::collection($this->posts),
+            //title, author, date et heure de création, dernière réponse (date et auteur), nombre de commentaires, 
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
         ];

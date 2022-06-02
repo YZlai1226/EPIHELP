@@ -20,9 +20,9 @@ class PostController extends Controller
         return response()->json(Post::all());
     }
 
-    public function getPostsByCategory(Category $category)
+    public function getPostsByCategory($id)
     {
-        return response()->json(Post::where("category_id", "=", $category));
+        return response()->json(Post::where("category_id", "=", $id));
     }
 
     /**
