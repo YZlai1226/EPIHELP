@@ -21,7 +21,7 @@ class UserResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'password' => $this->password,
-            'posts' => PostResource::collection($this->posts),
+            'posts' => PostSummary::collection($this->posts),
             'comments' => CommentResource::collection($this->comments),
             //'color' => $this->color,
             'created_at' => $this->created_at,
