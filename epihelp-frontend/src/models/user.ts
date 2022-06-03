@@ -1,4 +1,5 @@
-export interface PostList {
+export interface PostSummary {
+    id: string,
     title: string,
     content: string,
     category: string,
@@ -17,13 +18,23 @@ export interface PostList {
     }
 }
 
+export interface Comment {
+    id: string,
+    content: string,
+    post_id: string,
+    author_id: string,
+    author_name: string,
+    created_at: string,
+    updated_at: string
+}
+
 export interface User {
         id: string,
         name: string,
         email: string,
         password: string,
-        posts?: PostList[],
-        comments?: Array<Object>,
+        posts?: PostSummary[],
+        comments?: Comment[],
         role?: string,
         created_at: string,
         updated_at: string,
