@@ -1,22 +1,61 @@
 import AppLayout from './../components/Layouts/AppLayout'
+import React, { useEffect, useState } from 'react';
+import CategoryManager from './../components/Category/CategoryManager'
+import axios from './../services/axios'
+import { Category } from './../models/category';
 
-const Categories = () => (
-  <AppLayout
-    header={
-      <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-        Categories
-      </h2>
-    }>
-    <div className="py-12">
-      <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-          <div className="p-6 bg-white border-b border-gray-200">
-            You're logged in!
+// const Categories: React.FC<CategoryProps> = () => {
+const Categories = () => {
+  const [categories, setCategories] = useState<Category[]>([])
+
+  // async function getCategories() {
+  //   const response = await axios.get<Category[]>('/categories');
+  //   setCategories(response.data);
+  //   console.log('response is ', response);
+  //   console.log('result is ', categories);
+  // }
+
+  // useEffect(() => {
+  //   axios.get('/categories')
+  //     .then(result => {
+  //       setCategories(result.data)
+  //       console.log('result is ', result.data)
+  //     })
+  //     .catch(err => {
+  //       console.error(err.message);
+  //     })
+  // }, []);
+
+  useEffect(() => {
+    function getCategories() {
+      axios.get<Category[]>('/categories')
+        .then((response) => {
+          setCategories(response.data);
+        }
+        )
+    }
+    getCategories()
+  }, []);
+
+  return (
+    <AppLayout
+      header={
+        <h2 className="font-semibold text-xl text-gray-800 leading-tight">
+          Categories
+        </h2>
+      }
+    >
+      <div className="py-12">
+        <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+          <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div className="p-6 bg-white border-b border-gray-200">
+              <CategoryManager></CategoryManager>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </AppLayout>
-)
+    </AppLayout>
+  )
+}
 
 export default Categories
