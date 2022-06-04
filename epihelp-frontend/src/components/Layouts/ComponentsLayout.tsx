@@ -2,7 +2,6 @@ import React from 'react'
 
 interface ComponentsLayoutProps {
   title?: React.ReactNode;
-  children?: React.ReactNode;
 }
 const ComponentsLayout: React.FC<ComponentsLayoutProps> = ({ title, children }) => (
   <div /*className="min-h-screen bg-gray-100"*/>
