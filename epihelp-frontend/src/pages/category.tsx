@@ -2,6 +2,7 @@ import AppLayout from './../components/Layouts/AppLayout'
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { Category } from './../models/category';
+import PostsManager from './../components/posts/PostManager';
 
 const CategoryPage: React.FC = () => {
   // const { user } = useAuth({ middleware: 'auth' });
@@ -42,6 +43,7 @@ const CategoryPage: React.FC = () => {
           </div>
         </div>
       </div>
+      <PostsManager managerName={categoryData?.name} />
     </AppLayout>
 
   )
