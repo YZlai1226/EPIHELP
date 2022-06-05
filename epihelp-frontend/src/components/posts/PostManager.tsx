@@ -5,7 +5,6 @@ import EachPost from './EachPost';
 type PostManagerProps = {
   managerName: string,
   posts: Post[]
-
 }
 
 const postsManager: React.FC<PostManagerProps> = (props) => (
