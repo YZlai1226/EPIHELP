@@ -7,11 +7,15 @@ import PostsManager from './../components/posts/PostManager';
 const CategoryPage: React.FC = () => {
   // const { user } = useAuth({ middleware: 'auth' });
   const [categoryData, setCategoryData] = useState<Category>();
-
+  const idURL = window.location.href.replace('http://localhost:3000/category/', '') // ICI JE VEUX AVOIR QUE L'ID
+  const [managerName, setManagerName] = useState<string>();
+  
   useEffect(() => {
-    getCategoryData('629661c6a3a87f9f730c9b02') // Props from router link in ctegoriesPage
+    if (idURL){
+      getCategoryData(idURL)
+    }
   }, []);
-
+  
   async function getCategoryData(id: string) {
     type categoryResponse = {
       data: Category;
@@ -19,7 +23,7 @@ const CategoryPage: React.FC = () => {
     try {
       const res = await axios.get<categoryResponse>(`http://localhost:8000/api/categories/${id}`);
       setCategoryData(res.data.data);
-      console.log('category info is', res.data.data)
+      setManagerName(`Posts from ${categoryData?.name}`)
     } catch (e) {
       console.error(e);
     }
@@ -43,7 +47,12 @@ const CategoryPage: React.FC = () => {
           </div>
         </div>
       </div>
-      <PostsManager managerName={categoryData?.name} />
+      {categoryData?.posts && managerName &&
+        <PostsManager
+          managerName={managerName}
+          posts={categoryData?.posts}
+        />
+      }
     </AppLayout>
 
   )
