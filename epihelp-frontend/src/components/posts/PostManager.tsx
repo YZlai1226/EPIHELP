@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
 import ComponentsLayout from './../Layouts/ComponentsLayout';
 import { Post } from './../../models/post'
+import EachPost from './EachPost';
 
 type PostManagerProps = {
-  managerName?: string,
+  managerName: string,
+  posts: Post[]
 }
 
 const postsManager: React.FC<PostManagerProps> = (props) => (
@@ -13,7 +14,10 @@ const postsManager: React.FC<PostManagerProps> = (props) => (
         {props.managerName}
       </h2>
     }>
-    <span> I'm the postManager</span>
+    {props.posts.map((post) => (
+      <EachPost post={post} key={post.id}/>
+    )
+    )}
   </ComponentsLayout>
 )
 export default postsManager;
