@@ -8,24 +8,6 @@ import { Category } from './../models/category';
 const Categories = () => {
   const [categories, setCategories] = useState<Category[]>([])
 
-  // async function getCategories() {
-  //   const response = await axios.get<Category[]>('/categories');
-  //   setCategories(response.data);
-  //   console.log('response is ', response);
-  //   console.log('result is ', categories);
-  // }
-
-  // useEffect(() => {
-  //   axios.get('/categories')
-  //     .then(result => {
-  //       setCategories(result.data)
-  //       console.log('result is ', result.data)
-  //     })
-  //     .catch(err => {
-  //       console.error(err.message);
-  //     })
-  // }, []);
-
   useEffect(() => {
     function getCategories() {
       axios.get<Category[]>('/categories')
@@ -49,7 +31,9 @@ const Categories = () => {
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div className="p-6 bg-white border-b border-gray-200">
-              <CategoryManager></CategoryManager>
+              { categories &&
+                <CategoryManager categories={categories}></CategoryManager>
+              }
             </div>
           </div>
         </div>
