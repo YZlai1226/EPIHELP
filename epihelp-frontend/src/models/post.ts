@@ -4,6 +4,7 @@ export interface Post {
     id: string,
     title: string,
     category: string,
+    content: string,
     author_id: string,
     author_name: string, 
     created_at: string,
