@@ -1,62 +1,119 @@
-import React from "react"
+import React, { useState } from 'react'
+// eslint-disable-next-line no-restricted-imports
+import { useAuth } from '../hooks/auth';
+// eslint-disable-next-line no-restricted-imports
+import createPost from '../services/postservice'
 
-type FormProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
+/* eslint-disable max-len */
+export default function Form() {
+  const { user } = useAuth({ middleware: 'auth' });
+  const [title, setTitle] = useState('');
+  const [category, setCategory] = useState('');
+  const [content, setContent] = useState('');
 
-const Form: React.FC<FormProps> = ({ type = 'submit', className, ...props }) => (
+  const handleSubmit = (e: { preventDefault: () => void; }  ) => {
+    e.preventDefault()
+    createPost(user._id, title, category, content)
+  }
 
-<form class="w-full max-w-lg">
-  <div class="flex flex-wrap -mx-3 mb-6">
-    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-        First Name
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane">
-      <p class="text-red-500 text-xs italic">Please fill out this field.</p>
-    </div>
-    <div class="w-full md:w-1/2 px-3">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-        Last Name
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe">
-    </div>
-  </div>
-  <div class="flex flex-wrap -mx-3 mb-6">
-    <div class="w-full px-3">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-        Password
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="password" placeholder="******************">
-      <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
-    </div>
-  </div>
-  <div class="flex flex-wrap -mx-3 mb-2">
-    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-        City
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" placeholder="Albuquerque">
-    </div>
-    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
-        State
-      </label>
-      <div class="relative">
-        <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-          <option>New Mexico</option>
-          <option>Missouri</option>
-          <option>Texas</option>
-        </select>
-        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+  return (
+    <>
+      <div>
+        <div className="md:grid md:grid-cols-3 md:gap-6">
+          <div className="md:col-span-1">
+            <div className="px-4 sm:px-0">
+              <h3 className="text-lg font-medium leading-6 text-gray-900">Ask your question</h3>
+              <p className="mt-1 text-sm text-gray-600">
+                Before you post, be sure to check the <a href='#'>forums</a> to see if someone already answered it.
+              </p>
+            </div>
+          </div>
+          <div className="mt-5 md:mt-0 md:col-span-2">
+            <form onSubmit={handleSubmit}>
+              <div className="shadow sm:rounded-md sm:overflow-hidden">
+                <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
+                  <div className="grid grid-cols-3 gap-6">
+                    <div className="col-span-3 sm:col-span-2">
+                      <label htmlFor="company-website" className="block text-sm font-medium text-gray-700">
+                        Title
+                      </label>
+                      <div className="mt-1 flex rounded-md shadow-sm">
+                        <input
+                          type="text"
+                          name="title"
+                          id="title"
+                          value={title}
+                          onChange={(e) => setTitle(e.target.value)}
+                          className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full
+                          rounded-md sm:text-sm border-gray-300"
+                          placeholder="Enter the title of your question."
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-span-6 sm:col-span-3">
+                    <label htmlFor="country" className="block text-sm font-medium text-gray-700">
+                      Category
+                    </label>
+                    <select
+                      id="category"
+                      name="category"
+                      onChange={(e) => setCategory(e.target.value)}
+                      autoComplete="category"
+                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm
+                            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    >
+
+                      <option value='629661c6a3a87f9f730c9b02'>Software development</option>
+                      <option value='62966202a3a87f9f730c9b03'>Web development</option>
+                      <option value='62966272a3a87f9f730c9b04'>Security/Hacking</option>
+                      <option value='6298863eb4671f842c0d7892'>Data/AI</option>
+                      <option value='62988671b4671f842c0d7893'>Hardware</option>
+                      <option value='6298874fb4671f842c0d7894'>Job and Internship search</option>
+                      <option value='62988856b4671f842c0d7895'>Entrepreneurship</option>
+                      <option value='62988918b4671f842c0d7896'>Student life</option>
+                      <option value='62988fcab4671f842c0d7897'>General discussion</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label htmlFor="about" className="block text-sm font-medium text-gray-700">
+                      Your question
+                    </label>
+                    <div className="mt-1">
+                      <textarea
+                        id="about"
+                        name="about"
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
+                        rows={6}
+                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block
+                        w-full sm:text-sm border border-gray-300 rounded-md"
+                        placeholder="Enter the content of your question"
+                      />
+                    </div>
+                    <p className="mt-2 text-sm text-gray-500">
+                      Be as detailed as possible.
+                    </p>
+                  </div>
+
+                </div>
+                <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                  <button
+                    type="submit"
+                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm
+                    text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none
+                    focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  >
+                    Post
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
-        Zip
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="text" placeholder="90210">
-    </div>
-  </div>
-</form>
-)
+    </>
+  )
+}
+/* eslint-enable max-len */

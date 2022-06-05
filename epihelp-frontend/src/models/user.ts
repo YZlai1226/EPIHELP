@@ -1,32 +1,5 @@
-export interface PostSummary {
-    id: string,
-    title: string,
-    content: string,
-    category: string,
-    author_id: string,
-    author_name: string,
-    created_at: string,
-    updated_at: string,
-    number_of_comments?: number,
-    last_comment?: {
-        id: string,
-        author_id: string,
-        author_name: string,
-        content: string,
-        created_at: string,
-        updated_at: string
-    }
-}
-
-export interface Comment {
-    id: string,
-    content: string,
-    post_id: string,
-    author_id: string,
-    author_name: string,
-    created_at: string,
-    updated_at: string
-}
+import { Comment } from './comment'
+import { PostSummary } from './post'
 
 export interface User {
         id: string,
@@ -36,6 +9,7 @@ export interface User {
         posts?: PostSummary[],
         comments?: Comment[],
         role?: string,
+        tags?: string[],
         created_at: string,
         updated_at: string,
     }

@@ -1,4 +1,5 @@
 import AppLayout from './../components/Layouts/AppLayout'
+import Form from './../components/Form'
 
 const NewPost = () => (
   <AppLayout
@@ -11,7 +12,7 @@ const NewPost = () => (
       <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div className="p-6 bg-white border-b border-gray-200">
-            Live Chat page
+            <Form />
           </div>
         </div>
       </div>
