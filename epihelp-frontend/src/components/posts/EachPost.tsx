@@ -1,6 +1,7 @@
 import React from 'react';
 import EachsLayout from './../Layouts/EachsLayout';
 import { Post } from './../../models/post';
+import { Link } from 'react-router-dom';
 
 type EachPostProps = {
   post: Post
@@ -9,9 +10,9 @@ type EachPostProps = {
 const EachPost: React.FC<EachPostProps> = (props) => (
   <EachsLayout
     title={
-      <span>
+      <Link to={`/post/${props.post?.id}`}>
         {props.post.title}
-      </span>
+      </Link>
     }>
     <div className='flex justify-between'>
       <div className='flex flex-col'>
