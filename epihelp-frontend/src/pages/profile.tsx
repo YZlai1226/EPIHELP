@@ -25,7 +25,7 @@ const Profile: React.FC = () => {
     getUserData(user?._id)
   }, [user]);
 
-  const posts = userData?.posts.map((post) => <li key={post.id}>
+  const posts = userData.posts?.map((post) => <li key={post.id}>
     {post.title} posted on {post.created_at} in {post.category}
   </li>)
 

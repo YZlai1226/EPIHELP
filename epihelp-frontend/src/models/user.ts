@@ -1,4 +1,5 @@
 export interface PostList {
+    id: string,
     title: string,
     content: string,
     category: string,
