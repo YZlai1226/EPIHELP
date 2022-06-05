@@ -13,6 +13,7 @@ import Home from './pages/home';
 import ForgotPassword from './pages/forgot-password';
 import PasswordReset from './pages/password-reset';
 import NotFoundPage from './pages/404';
+import NewPost from './pages/newpost';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/categories" element={<Categories />} />
         <Route path="/category/:category" element={<Category />} />
         <Route path="/post/:post" element={<Post />} />
+        <Route path="/newpost" element={<NewPost />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/livechat" element={<LiveChat />} />
