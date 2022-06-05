@@ -9,11 +9,14 @@ type CategoryProps = {
 }
 
 const CategoryManager: React.FC<CategoryProps> = (props) => (
-  <ComponentsLayout>
-    <div>I am Category Manager</div>
-    {console.log('=======', props.categories[0])}
-    <EachCategory></EachCategory>
-  </ComponentsLayout>
+  <>
+    {/* <div>I am Category Manager</div>
+    {console.log('=======', props.categories[0])} */}
+    {props.categories.map((category) => (
+      <EachCategory category={category} key={category.id}/>
+    )
+    )}
+  </>
 )
 
 export default CategoryManager
