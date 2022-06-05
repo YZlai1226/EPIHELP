@@ -7,7 +7,8 @@ export interface Post {
     user_id: string,
     updated_at: string,
     created_at: string,
-    comments: Comment[],
+    number_of_comments?: number,
+    comments?: Comment[],
     category_id: string
 }
 
