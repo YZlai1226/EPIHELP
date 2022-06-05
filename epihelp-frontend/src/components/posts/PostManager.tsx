@@ -4,7 +4,6 @@ import { Post } from './../../models/post'
 
 type PostManagerProps = {
   managerName?: string,
-
 }
 
 const postsManager: React.FC<PostManagerProps> = (props) => (

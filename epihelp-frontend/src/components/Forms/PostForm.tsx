@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 // eslint-disable-next-line no-restricted-imports
-import { useAuth } from '../hooks/auth';
+import { useAuth } from '../../hooks/auth';
 // eslint-disable-next-line no-restricted-imports
-import createPost from '../services/postservice'
+import { createPost } from '../../services/postservice'
 
 /* eslint-disable max-len */
-export default function Form() {
+export default function PostForm() {
   const { user } = useAuth({ middleware: 'auth' });
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
@@ -24,7 +24,7 @@ export default function Form() {
             <div className="px-4 sm:px-0">
               <h3 className="text-lg font-medium leading-6 text-gray-900">Ask your question</h3>
               <p className="mt-1 text-sm text-gray-600">
-                Before you post, be sure to check the <a href='#'>forums</a> to see if someone already answered it.
+                Before you post, be sure to check the <a href='/'>forums</a> to see if someone already answered it.
               </p>
             </div>
           </div>
