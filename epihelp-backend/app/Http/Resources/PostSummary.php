@@ -18,7 +18,7 @@ class PostSummary extends JsonResource
         $post_summary = [
             'id' => $this->id,
             'title' => $this->title,
-            'content' => $this->content,
+            //'content' => $this->content,
             'category' => $this->category->name,
             'author_id' => $this->user->id,
             'author_name' => $this->user->name,

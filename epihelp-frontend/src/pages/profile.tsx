@@ -25,10 +25,6 @@ const Profile: React.FC = () => {
     getUserData(user?._id)
   }, [user]);
 
-  const posts = userData.posts?.map((post) => <li key={post.id}>
-    {post.title} posted on {post.created_at} in {post.category}
-  </li>)
-
   return (
     <AppLayout
       header={
@@ -48,9 +44,18 @@ const Profile: React.FC = () => {
                 <p>Email: {userData.email}</p>
                 <p>Member since {userData.created_at}</p>
                 <br></br>
-                <h2>Posts:</h2>
+                <h2>My Posts:</h2>
                 <ul>
-                  {posts}
+                  {userData.posts?.map((post) => <li key={post.id}>
+                    {post.title} posted on {post.created_at} in {post.category}
+                  </li>)}
+                </ul>
+                <br></br>
+                <h2>My Answers:</h2>
+                <ul>
+                  {userData.comments?.map((comment) => <li key={comment.id}>
+                    {comment.content} posted on {comment.created_at} to {comment.post_id}
+                  </li>)}
                 </ul>
               </div>
               : 'Loading user information...'
@@ -58,7 +63,7 @@ const Profile: React.FC = () => {
           </div>
         </div>
       </div>
-    </AppLayout>
+    </AppLayout >
   )
 }
 export default Profile

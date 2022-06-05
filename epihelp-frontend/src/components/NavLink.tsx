@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavLink, To } from 'react-router-dom';
-import { NavLinkProps } from './../models/NavLinkProps'
+import { NavLink } from 'react-router-dom';
+import { NavLinkProps } from './NavLinkProps'
 // interface NavLinkProps {
 //   to: To,
 // }
