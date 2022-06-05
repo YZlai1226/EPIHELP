@@ -4,10 +4,12 @@ import { Post } from './../models/post'
 import CommentForm from './../components/Forms/CommentForm'
 import AppLayout from './../components/Layouts/AppLayout'
 import axios from 'axios'
+import CommentsManager from './../components/comments/CommentsManager'
 
 const PostPage = () => {
   const { id } = useParams()
   const StrId = id as any as string
+  const managerName = 'Comments'
 
   const [postData, setpostData] = useState<Post>();
   const idURL = window.location.href.replace('http://localhost:3000/post/', '')
@@ -46,15 +48,18 @@ const PostPage = () => {
             <div className='flex justify-between italic px-6'>
               <span>{postData?.author_name}</span>
               <span>
-                created at: {postData?.created_at.substring(0, 10)} {postData?.created_at.substring(11, 16)}
+                created at: {`${postData?.created_at.substring(0, 10)} `} {postData?.created_at.substring(11, 16)}
               </span>
               <span>
-                last edition: {postData?.updated_at.substring(0, 10)} {postData?.updated_at.substring(11, 16)}
+                last edition: {`${postData?.updated_at.substring(0, 10)} `} {postData?.updated_at.substring(11, 16)}
               </span>
             </div>
           </div>
         </div>
       </div>
+      {postData?.comments &&
+        <CommentsManager managerName={managerName} Comments={postData?.comments} />
+      }
       <CommentForm post_id={StrId} />
 
     </AppLayout>
