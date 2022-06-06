@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react';
 import { User } from './../models/user';
 import { useAuth } from './../hooks/auth';
+import { PostsManager } from './../components/posts/PostsManager'
 
 const Profile: React.FC = () => {
 
@@ -45,11 +46,16 @@ const Profile: React.FC = () => {
                 <p>Member since {userData.created_at}</p>
                 <br></br>
                 <h2>My Posts:</h2>
-                <ul>
+                {userData?.posts &&
+                <PostsManager
+                  managerName={'My posts'}
+                  posts={userData?.posts}
+                />}
+                {/* <ul>
                   {userData.posts?.map((post) => <li key={post.id}>
                     {post.title} posted on {post.created_at} in {post.category}
                   </li>)}
-                </ul>
+                </ul> */}
                 <br></br>
                 <h2>My Answers:</h2>
                 <ul>

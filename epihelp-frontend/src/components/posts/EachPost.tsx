@@ -1,10 +1,10 @@
 import React from 'react';
 import EachsLayout from './../Layouts/EachsLayout';
-import { Post } from './../../models/post';
+import { Post, PostSummary } from './../../models/post';
 import { Link } from 'react-router-dom';
 
 type EachPostProps = {
-  post: Post
+  post: PostSummary
 }
 
 const EachPost: React.FC<EachPostProps> = (props) => (
