@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { User } from './../models/user';
 import { useAuth } from './../hooks/auth';
 import { PostsManager } from './../components/posts/PostsManager'
+import ComponentsLayout from './../components/Layouts/ComponentsLayout';
+import CommentsManager from './../components/comments/CommentsManager';
 
 const Profile: React.FC = () => {
 
@@ -45,24 +47,15 @@ const Profile: React.FC = () => {
                 <p>Email: {userData.email}</p>
                 <p>Member since {userData.created_at}</p>
                 <br></br>
-                <h2>My Posts:</h2>
+                <h2>My activity:</h2>
                 {userData?.posts &&
-                <PostsManager
-                  managerName={'My posts'}
-                  posts={userData?.posts}
-                />}
-                {/* <ul>
-                  {userData.posts?.map((post) => <li key={post.id}>
-                    {post.title} posted on {post.created_at} in {post.category}
-                  </li>)}
-                </ul> */}
-                <br></br>
-                <h2>My Answers:</h2>
-                <ul>
-                  {userData.comments?.map((comment) => <li key={comment.id}>
-                    {comment.content} posted on {comment.created_at} to {comment.post_id}
-                  </li>)}
-                </ul>
+                  <PostsManager
+                    managerName={'My posts'}
+                    posts={userData?.posts}
+                  />}
+                {userData.comments &&
+                  <CommentsManager managerName='My comments' Comments={userData.comments} />
+                }
               </div>
               : 'Loading user information...'
             }
