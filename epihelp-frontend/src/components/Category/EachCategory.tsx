@@ -4,7 +4,7 @@ import { Category } from './../../models/category';
 import { Link } from 'react-router-dom';
 import ComponentsLayout from './../Layouts/ComponentsLayout';
 //import mainLogo from './../../images/logo.png';
-import mainLogo from './../../images/software_development.jpg';
+// import mainLogo from './../../images/software_development.jpg';
 // import mainLogo from `./../../images`;
 
 type EachCategoryProps = {
@@ -21,9 +21,9 @@ const EachCategory: React.FC<EachCategoryProps> = (props) => (
         </h2>
       }>
 
-      {console.log(`mainLogo: ${mainLogo}`)}
+      {/* {console.log(`mainLogo: ${mainLogo}`)} */}
       <div className="flex gap-6 items-center">
-        <img src={mainLogo} width='300px' alt="category" />
+        <img src={`/images/${props.category?.image_url}.jpg`} width='300px' alt="category" />
         <span>
           {props.category.description}
         </span>
