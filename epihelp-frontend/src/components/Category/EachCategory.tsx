@@ -12,7 +12,7 @@ type EachCategoryProps = {
 }
 
 const EachCategory: React.FC<EachCategoryProps> = (props) => (
-  <Link to={`/category/${props.category?._id}`}>
+  <Link to={`/category/${props.category?.id}`}>
     {/* {console.log(`mainLogo: ${props.category?._id}`)} */}
     <ComponentsLayout
       title={
