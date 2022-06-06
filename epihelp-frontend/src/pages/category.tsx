@@ -6,17 +6,8 @@ import PostsManager from './../components/posts/PostManager';
 
 const CategoryPage: React.FC = () => {
   const [categoryData, setCategoryData] = useState<Category>();
-  const idURL = window.location.href.replace('http://localhost:3000/category/', '')
+  const idURL = window.location.href.replace('http://localhost:3000/category/', '');
   const [managerName, setManagerName] = useState<string>();
-  
-  useEffect(() => {
-    if (idURL){
-      getCategoryData(idURL)
-    }
-    if (categoryData) {
-      setManagerName(`Posts from ${categoryData?.name}`)
-    }
-  }, []);
   
   async function getCategoryData(id: string) {
     type categoryResponse = {
@@ -29,6 +20,17 @@ const CategoryPage: React.FC = () => {
       console.error(e);
     }
   }
+
+  useEffect(() => {
+    if (idURL){
+      getCategoryData(idURL)
+    }
+  }, [idURL]);
+  
+  useEffect(() => {
+    setManagerName(`Posts from ${categoryData?.name}`)
+  }, [categoryData])
+  
   return (
     <AppLayout
       header={
@@ -55,7 +57,6 @@ const CategoryPage: React.FC = () => {
         />
       }
     </AppLayout>
-
   )
 }
 

@@ -7,10 +7,7 @@ import axios from 'axios'
 import CommentsManager from './../components/comments/CommentsManager'
 
 const PostPage = () => {
-  const { id } = useParams()
-  const StrId = id as any as string
   const managerName = 'Comments'
-
   const [postData, setpostData] = useState<Post>();
   const idURL = window.location.href.replace('http://localhost:3000/post/', '')
 
@@ -18,7 +15,7 @@ const PostPage = () => {
     if (idURL) {
       getpostData(idURL)
     }
-  }, []);
+  }, [idURL]);
 
   async function getpostData(id: string) {
     type postResponse = {
@@ -30,6 +27,15 @@ const PostPage = () => {
     } catch (e) {
       console.error(e);
     }
+  }
+
+  function addComment(newcomment: Comment) {
+    console.log('newcomment:', newcomment);
+    getpostData(idURL);
+    /* let copy: any = postData;
+    copy?.comments.push(newcomment)
+    console.log('copy:', copy);
+    setpostData(copy) */
   }
 
   return (
@@ -60,7 +66,7 @@ const PostPage = () => {
       {postData?.comments &&
         <CommentsManager managerName={managerName} Comments={postData?.comments} />
       }
-      <CommentForm post_id={StrId} />
+      <CommentForm post_id={idURL} addComment={addComment} />
 
     </AppLayout>
   )

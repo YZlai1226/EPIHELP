@@ -2,12 +2,15 @@ import React, { useState } from 'react'
 // eslint-disable-next-line no-restricted-imports
 import { useAuth } from '../../hooks/auth';
 // eslint-disable-next-line no-restricted-imports
+import { Comment } from '../../models/comment';
+// eslint-disable-next-line no-restricted-imports
 import { createComment } from '../../services/postservice'
 import ComponentsLayout from './../Layouts/ComponentsLayout';
 
 /* eslint-disable max-len */
 type CommentFormProps = {
   post_id: string,
+  addComment: (params: any) => any;
 }
 
 const CommentForm: React.FC<CommentFormProps> = (props) => {
@@ -15,15 +18,19 @@ const CommentForm: React.FC<CommentFormProps> = (props) => {
   const [content, setContent] = useState('');
 
   const handleSubmit = (e: { preventDefault: () => void; }) => {
-    e.preventDefault()
+    e.preventDefault();
     createComment(user._id, props.post_id, content)
+      .then((newcomment) => {
+        console.log('newcomment', newcomment);
+        props.addComment(newcomment?.data.data);
+      })
   }
 
   return (
     <ComponentsLayout
       title={
         <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-         Your answer
+          Your answer
         </h2>
       }>
 

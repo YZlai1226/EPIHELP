@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Comment;
 use App\Http\Controllers\PostController;
+use App\Http\Resources\CommentResource;
 
 class CommentController extends Controller
 {
@@ -41,7 +42,7 @@ class CommentController extends Controller
         $user = User::find($request->user_id);
         $user->push('comments', $comment->id);
 
-        return response()->json($comment, 201);
+        return new CommentResource($comment);
     }
 
     public function insertCommentIdInPost($comment_id)
