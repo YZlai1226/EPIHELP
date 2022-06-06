@@ -20,7 +20,7 @@ class PostSummary extends JsonResource
             'title' => $this->title,
             //'content' => $this->content,
             'category' => $this->category->name,
-            'author_id' => $this->user->id($this->whenLoaded('author_id')),
+            'author_id' => $this->user->id,
             'author_name' => $this->user->name,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
