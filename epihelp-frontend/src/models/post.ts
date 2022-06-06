@@ -9,9 +9,9 @@ export interface Post {
     author_name: string, 
     created_at: string,
     updated_at: string,
-    comments: Comment[],
-    number_of_comment: number,
-    last_comment: Comment,
+    comments?: Comment[],
+    number_of_comment?: number,
+    last_comment?: Comment,
     category_id: string
 }
 
