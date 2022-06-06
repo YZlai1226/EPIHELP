@@ -3,8 +3,11 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { Category } from './../models/category';
 import {PostsManager} from './../components/posts/PostsManager';
+import Button from './../components/Button';
+import { useNavigate } from 'react-router-dom';
 
 const CategoryPage: React.FC = () => {
+  let navigate = useNavigate();
   const [categoryData, setCategoryData] = useState<Category>();
   const idURL = window.location.href.replace('http://localhost:3000/category/', '');
   const [managerName, setManagerName] = useState<string>();
@@ -45,6 +48,13 @@ const CategoryPage: React.FC = () => {
               <div className="flex gap-6 items-center">
                 <img src={categoryData?.image_url} alt="category" />
                 <span>{categoryData?.description}</span>
+                <Button
+                  className="ml-3"
+                  //onClick={() => navigate(`/newpost&cat=${categoryData?.id}`)}
+                  onClick={() => navigate('/newpost')}
+                >
+                  Create a new post
+                </Button>
               </div>
             </div>
           </div>
