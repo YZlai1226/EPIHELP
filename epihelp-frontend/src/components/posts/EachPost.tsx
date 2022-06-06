@@ -32,7 +32,7 @@ const EachPost: React.FC<EachPostProps> = (props) => (
         <span className='italic text-right'>
           {`${props.post?.created_at.substring(0, 10)} `} {props.post?.last_comment?.created_at.substring(11, 16)}
         </span>
-      </div>C
+      </div>
     </div>
   </EachsLayout>
 )
