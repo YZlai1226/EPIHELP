@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\PostSummary;
 
-class CategoryResource extends JsonResource
+class CategorySummary extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -20,7 +20,7 @@ class CategoryResource extends JsonResource
             'name' => $this->name,  
             'description' => $this->description,
             'image_url' => $this->image_url,
-            'posts' => PostSummary::collection($this->posts),
+            //'posts' => PostSummary::collection($this->posts),
             //title, author, date et heure de création, dernière réponse (date et auteur), nombre de commentaires, 
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
