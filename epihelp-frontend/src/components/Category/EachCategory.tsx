@@ -1,11 +1,7 @@
 import React from 'react';
-import EachsLayout from './../Layouts/EachsLayout';
 import { Category } from './../../models/category';
 import { Link } from 'react-router-dom';
 import ComponentsLayout from './../Layouts/ComponentsLayout';
-//import mainLogo from './../../images/logo.png';
-// import mainLogo from './../../images/software_development.jpg';
-// import mainLogo from `./../../images`;
 
 type EachCategoryProps = {
   category: Category
@@ -13,22 +9,28 @@ type EachCategoryProps = {
 
 const EachCategory: React.FC<EachCategoryProps> = (props) => (
   <Link to={`/category/${props.category?.id}`}>
-    {/* {console.log(`mainLogo: ${props.category?._id}`)} */}
-    <ComponentsLayout
+    {/* <ComponentsLayout
       title={
         <h2 className="font-semibold text-xl text-red-800">
           {props.category.name}
         </h2>
       }>
-
-      {/* {console.log(`mainLogo: ${mainLogo}`)} */}
       <div className="flex gap-6 items-center">
         <img src={`/images/${props.category?.image_url}.jpg`} width='300px' alt="category" />
         <span>
           {props.category.description}
         </span>
       </div>
-    </ComponentsLayout>
+    </ComponentsLayout> */}
+    <div className="max-w-sm h-full rounded overflow-hidden shadow-lg">
+      <img src={`/images/${props.category?.image_url}.jpg`} width='100%' alt="category" />
+      <div className="px-6 py-4">
+        <div className="font-bold text-xl mb-2">{props.category.name}</div>
+        {/* <p className="text-gray-700 text-base">
+          {props.category.description}
+        </p> */}
+      </div>
+    </div>
   </Link>
 )
 
