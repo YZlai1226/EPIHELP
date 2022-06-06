@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 // eslint-disable-next-line no-restricted-imports
 import { useAuth } from '../../hooks/auth';
 // eslint-disable-next-line no-restricted-imports
-import { createPost } from '../../services/postservice'
+import { createPost } from '../../services/postsService'
 
 /* eslint-disable max-len */
 export default function PostForm() {
