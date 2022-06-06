@@ -1,3 +1,4 @@
+import { Post } from './../models/post';
 import myAxios from './axios';
 
 export async function createPost(
@@ -18,19 +19,22 @@ export async function createPost(
   }
 }
 
-export async function createComment(
-  user_id: string,
-  post_id: string,
-  content: string
+export async function editPost(
+  id: string,
+  title: string,
+  content: string,
+  category?: string
 ) {
+  type postResponse = {
+    data: Post;
+  };
   try {
-    const res = myAxios.post<Comment>('/comments', {
-      user_id: user_id,
-      post_id: post_id,
-      content: content
-    })
-    return res;
+    myAxios.put<postResponse>(`/posts/${id}`, {
+      title: title,
+      content: content,
+      category: category
+    });
   } catch (e) {
-    console.error(e)
+    console.error(e);
   }
 }
