@@ -1,16 +1,12 @@
 import React, { useState } from 'react'
-// eslint-disable-next-line no-restricted-imports
-import { useAuth } from '../../hooks/auth';
-// eslint-disable-next-line no-restricted-imports
-import { Comment } from '../../models/comment';
-// eslint-disable-next-line no-restricted-imports
-import { createComment } from '../../services/postservice'
+import { useAuth } from './../../hooks/auth';
+import { createComment } from './../../services/commentsService'
 import ComponentsLayout from './../Layouts/ComponentsLayout';
 
 /* eslint-disable max-len */
 type CommentFormProps = {
   post_id: string,
-  addComment: (params: any) => any;
+  addComment: () => void;
 }
 
 const CommentForm: React.FC<CommentFormProps> = (props) => {
@@ -20,9 +16,8 @@ const CommentForm: React.FC<CommentFormProps> = (props) => {
   const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     createComment(user._id, props.post_id, content)
-      .then((newcomment) => {
-        console.log('newcomment', newcomment);
-        props.addComment(newcomment?.data.data);
+      .then(() => {
+        props.addComment();
       })
   }
 
@@ -34,17 +29,12 @@ const CommentForm: React.FC<CommentFormProps> = (props) => {
         </h2>
       }>
 
-      {/* <div className="md:grid md:grid-cols-3 md:gap-6"> */}
-
       <div className="mt-5 md:mt-0 md:col-span-2">
         <form onSubmit={handleSubmit}>
           <div className="shadow sm:rounded-md sm:overflow-hidden">
             <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
 
               <div>
-                {/* <label htmlFor="about" className="block text-sm font-medium text-gray-700">
-                  Your answer
-                </label> */}
                 <div className="mt-1">
                   <textarea
                     id="about"
@@ -76,7 +66,6 @@ const CommentForm: React.FC<CommentFormProps> = (props) => {
           </div>
         </form>
       </div>
-      {/* </div> */}
     </ComponentsLayout>
   )
 }

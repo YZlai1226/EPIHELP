@@ -8,6 +8,7 @@ type PostManagerProps = {
 }
 
 const postsManager: React.FC<PostManagerProps> = (props) => {
+
   console.log(props.posts);
   return (
     <ComponentsLayout

@@ -3,6 +3,8 @@ import EachsLayout from './../Layouts/EachsLayout';
 import { Post } from './../../models/post';
 import { Link } from 'react-router-dom';
 
+/* eslint-disable max-len */
+
 type EachPostProps = {
   post: Post
 }
