@@ -33,6 +33,7 @@ const PostPage = () => {
     console.log('newcomment:', newcomment);
     getpostData(idURL);
     /* let copy: any = postData;
+    const newarray = [...postData]
     copy?.comments.push(newcomment)
     console.log('copy:', copy);
     setpostData(copy) */

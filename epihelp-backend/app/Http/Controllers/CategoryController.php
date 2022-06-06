@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Http\Resources\CategoryResource;
+use App\Http\Resources\CategorySummary;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -15,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return response()->json(Category::all());
+        return CategorySummary::collection(Category::all());
     }
 
     /**
@@ -29,7 +30,7 @@ class CategoryController extends Controller
         $category = new Category();
 
         $category->name = $request->name;
-        $category->image = $request->image;
+        $category->image_url = $request->image_url;
         $category->description = $request->description;
         
         $category->save();
