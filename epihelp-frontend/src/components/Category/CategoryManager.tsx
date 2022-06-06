@@ -10,8 +10,6 @@ type CategoryProps = {
 
 const CategoryManager: React.FC<CategoryProps> = (props) => (
   <>
-    {/* <div>I am Category Manager</div>
-    {console.log('=======', props.categories[0])} */}
     {props.categories.map((category) => (
       <EachCategory category={category} key={category.id}/>
     )
