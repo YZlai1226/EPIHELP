@@ -1,9 +1,21 @@
 import React from 'react';
+import EachsLayout from './../Layouts/EachsLayout';
+import { Category } from './../../models/category';
+import { Link } from 'react-router-dom';
 
-const EachCategory = () => (
+type EachCategoryProps = {
+  category: Category
+}
+
+const EachCategory: React.FC<EachCategoryProps> = (props) => (
   <>
-    <div>I am Each Category</div>
+
+    <div className='flex justify-between'>
+      <span>
+        {props.category.name}
+      </span>
+    </div>
   </>
 )
 
-export default EachCategory
+export default EachCategory;
