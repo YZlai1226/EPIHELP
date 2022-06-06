@@ -1,19 +1,33 @@
-import React, { useState } from 'react'
-// eslint-disable-next-line no-restricted-imports
-import { useAuth } from '../../hooks/auth';
-// eslint-disable-next-line no-restricted-imports
-import { createPost } from '../../services/postsService'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { Post } from './../../models/post';
+import { useAuth } from './../../hooks/auth';
+import { createPost } from './../../services/postsService'
 
+type PostFormProps = {
+  categoryId: string
+}
 /* eslint-disable max-len */
-export default function PostForm() {
+const PostForm: React.FC<PostFormProps> = (props) => {
+
+  let navigate = useNavigate();
   const { user } = useAuth({ middleware: 'auth' });
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
   const [content, setContent] = useState('');
 
-  const handleSubmit = (e: { preventDefault: () => void; }  ) => {
+  type postResponse = {
+    data: Post
+  }
+
+  useEffect(() => {
+    setCategory(props.categoryId);
+  }, [props.categoryId]);
+
+  const handleSubmit = async (e: { preventDefault: () => void; }  ) => {
     e.preventDefault()
-    createPost(user._id, title, category, content)
+    const res: any = await createPost(user._id, title, category, content)
+    navigate(`/post/${res.data._id}`)
   }
 
   return (
@@ -55,6 +69,8 @@ export default function PostForm() {
                     <label htmlFor="country" className="block text-sm font-medium text-gray-700">
                       Category
                     </label>
+                    {/* <p>Cat: {props.categoryId}</p>
+                    <p>User: {user._id}</p> */}
                     <select
                       id="category"
                       name="category"
@@ -63,7 +79,6 @@ export default function PostForm() {
                       className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
-
                       <option value='629661c6a3a87f9f730c9b02'>Software development</option>
                       <option value='62966202a3a87f9f730c9b03'>Web development</option>
                       <option value='62966272a3a87f9f730c9b04'>Security/Hacking</option>
@@ -117,3 +132,4 @@ export default function PostForm() {
   )
 }
 /* eslint-enable max-len */
+export default PostForm;

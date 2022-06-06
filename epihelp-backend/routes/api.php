@@ -26,4 +26,7 @@ Route::apiResource('categories', CategoryController::class);
 Route::apiResource('posts', PostController::class);
 Route::apiResource('comments', CommentController::class);
 Route::apiResource('users', UserController::class);
-
+Route::get('search/$query', function() {
+    $response = Article::whereRaw(array('$text'=>array('$search'=> $word)))->get();
+    return $response;
+});

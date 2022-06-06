@@ -51,8 +51,8 @@ const CategoryPage: React.FC = () => {
                 <span>{categoryData?.description}</span>
                 <Button
                   className="ml-3"
-                  //onClick={() => navigate(`/newpost&cat=${categoryData?.id}`)}
-                  onClick={() => navigate('/newpost')}
+                  onClick={() => navigate(`/newpost/${categoryData?.id}`)}
+                  //onClick={() => navigate('/newpost')}
                 >
                   Create a new post
                 </Button>
