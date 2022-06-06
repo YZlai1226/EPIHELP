@@ -7,12 +7,15 @@ import { Category } from './../models/category';
 // const Categories: React.FC<CategoryProps> = () => {
 const Categories = () => {
   const [categories, setCategories] = useState<Category[]>([])
+  type CategoryResponse = {
+    data: Category[]
+  }
 
-  useEffect(() => {
+  useEffect(() => { 
     function getCategories() {
-      axios.get<Category[]>('/categories')
+      axios.get<CategoryResponse>('/categories')
         .then((response) => {
-          setCategories(response.data);
+          setCategories(response.data.data);
         }
         )
     }

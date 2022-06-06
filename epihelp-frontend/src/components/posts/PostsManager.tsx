@@ -1,13 +1,13 @@
 import ComponentsLayout from './../Layouts/ComponentsLayout';
-import { Post } from './../../models/post'
+import { Post, PostSummary } from './../../models/post'
 import EachPost from './EachPost';
 
 type PostManagerProps = {
   managerName: string,
-  posts: Post[]
+  posts: PostSummary[]
 }
 
-const postsManager: React.FC<PostManagerProps> = (props) => {
+export const PostsManager: React.FC<PostManagerProps> = (props) => {
   console.log(props.posts);
   return (
     <ComponentsLayout
@@ -23,4 +23,3 @@ const postsManager: React.FC<PostManagerProps> = (props) => {
     </ComponentsLayout>
   )
 }
-export default postsManager;

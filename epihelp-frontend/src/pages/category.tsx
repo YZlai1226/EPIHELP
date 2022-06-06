@@ -2,7 +2,7 @@ import AppLayout from './../components/Layouts/AppLayout'
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { Category } from './../models/category';
-import PostsManager from './../components/posts/PostManager';
+import {PostsManager} from './../components/posts/PostsManager';
 
 const CategoryPage: React.FC = () => {
   const [categoryData, setCategoryData] = useState<Category>();
