@@ -20,7 +20,7 @@ const PostPage = () => {
     if (idURL) {
       getpostData(idURL)
     }
-    console.log('my id', user._id)
+    console.log('my id', user?._id)
   }, [idURL]);
 
   async function getpostData(id: string) {
@@ -46,7 +46,7 @@ const PostPage = () => {
           <h2 className="font-semibold text-xl text-gray-800 leading-tight">
             {postData?.category} / {postData?.title}
           </h2>
-          { user._id === postData?.author_id &&
+          { user?._id === postData?.author_id &&
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path
                 stroke-linecap="round"
