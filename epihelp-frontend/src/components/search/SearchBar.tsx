@@ -6,9 +6,9 @@ const SearchBar: React.FC = () => {
 
   const navigate = useNavigate();
   const [query, setQuery] = useState('');
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState('all');
   function handleSubmit() {
-    navigate('/resultspage', { state: { category: category, query: query } })
+    navigate('/searchresults', { state: { category: category, query: query } })
   }
 
   return (
@@ -26,9 +26,8 @@ const SearchBar: React.FC = () => {
             onChange={(e) => setCategory(e.target.value)}
             autoComplete="category"
             className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
-
           >
-            <option value=''>All categories</option>
+            <option value='all'>All categories</option>
             <option value='629661c6a3a87f9f730c9b02'>Software development</option>
             <option value='62966202a3a87f9f730c9b03'>Web development</option>
             <option value='62966272a3a87f9f730c9b04'>Security/Hacking</option>
