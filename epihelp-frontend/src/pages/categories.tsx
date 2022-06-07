@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import CategoryManager from './../components/Category/CategoryManager'
 import axios from './../services/axios'
 import { Category } from './../models/category';
+import Footer from './../components/Footer'
 
 // const Categories: React.FC<CategoryProps> = () => {
 const Categories = () => {
@@ -41,6 +42,8 @@ const Categories = () => {
           </div>
         </div>
       </div>
+      <br />
+      <Footer />
     </AppLayout>
   )
 }

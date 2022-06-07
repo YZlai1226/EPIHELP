@@ -1,4 +1,5 @@
 import AppLayout from './../components/Layouts/AppLayout'
+import Footer from './../components/Footer'
 
 const Admin = () => (
   <AppLayout
@@ -16,6 +17,8 @@ const Admin = () => (
         </div>
       </div>
     </div>
+    <br />
+    <Footer />
   </AppLayout>
 )
 
