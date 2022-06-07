@@ -29,7 +29,7 @@ function App() {
         <Route path="/legal" element={<Legal />} />
         <Route path="/category/:category" element={<Category />} />
         <Route path="/post/:post" element={<Post />} />
-        <Route path="/newpost" element={<NewPost />} />
+        <Route path="/newpost/:categoryId" element={<NewPost />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/livechat" element={<LiveChat />} />

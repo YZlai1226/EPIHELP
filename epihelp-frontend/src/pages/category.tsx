@@ -2,7 +2,7 @@ import AppLayout from './../components/Layouts/AppLayout'
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { Category } from './../models/category';
-import {PostsManager} from './../components/posts/PostsManager';
+import { PostsManager } from './../components/posts/PostsManager';
 import Button from './../components/Button';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,7 +11,7 @@ const CategoryPage: React.FC = () => {
   const [categoryData, setCategoryData] = useState<Category>();
   const idURL = window.location.href.replace('http://localhost:3000/category/', '');
   const [managerName, setManagerName] = useState<string>();
-  
+
   async function getCategoryData(id: string) {
     type categoryResponse = {
       data: Category;
@@ -25,15 +25,15 @@ const CategoryPage: React.FC = () => {
   }
 
   useEffect(() => {
-    if (idURL){
+    if (idURL) {
       getCategoryData(idURL)
     }
   }, [idURL]);
-  
+
   useEffect(() => {
     setManagerName(`Posts from ${categoryData?.name}`)
   }, [categoryData])
-  
+
   return (
     <AppLayout
       header={
@@ -51,22 +51,22 @@ const CategoryPage: React.FC = () => {
                 <span>{categoryData?.description}</span>
                 <Button
                   className="ml-3"
-                  //onClick={() => navigate(`/newpost&cat=${categoryData?.id}`)}
-                  onClick={() => navigate('/newpost')}
+                  onClick={() => navigate(`/newpost/${categoryData?.id}`)}
+                //onClick={() => navigate('/newpost')}
                 >
-                  Create a new post
+                  New post
                 </Button>
               </div>
             </div>
           </div>
         </div>
+        {categoryData?.posts && managerName &&
+          <PostsManager
+            managerName={managerName}
+            posts={categoryData?.posts}
+          />
+        }
       </div>
-      {categoryData?.posts && managerName &&
-        <PostsManager
-          managerName={managerName}
-          posts={categoryData?.posts}
-        />
-      }
     </AppLayout>
   )
 }
