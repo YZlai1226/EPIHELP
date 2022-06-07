@@ -9,12 +9,12 @@ type CategoryProps = {
 }
 
 const CategoryManager: React.FC<CategoryProps> = (props) => (
-  <>
+  <div className="grid gap-8 grid-cols-3">
     {props.categories.map((category) => (
       <EachCategory category={category} key={category.id}/>
     )
     )}
-  </>
+  </div>
 )
 
 export default CategoryManager

@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Post } from './../models/post';
 import myAxios from './axios';
 
@@ -7,13 +8,17 @@ export async function createPost(
   category: string,
   content: string
 ) {
+  type postResponse = {
+    data: Post;
+  };
   try {
-    myAxios.post('/posts', {
+    const res: postResponse = await myAxios.post('/posts', {
       user_id: user_id,
       title: title,
       category: category,
       content: content
-    })
+    });
+    return res;
   } catch (e) {
     console.error(e)
   }
