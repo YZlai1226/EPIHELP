@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\User;
 use App\Http\Resources\PostResource;
+use App\Http\Resources\PostSummary;
 
 class PostController extends Controller
 {
@@ -17,7 +18,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        return response()->json(Post::all());
+        // return response()->json(Post::all());
+        // $post = new PostResource(Post::all());
+        // return $post;
+        return PostResource::collection(Post::all());
+        
     }
 
     public function getPostsByCategory($id)
@@ -71,7 +76,7 @@ class PostController extends Controller
         $post->update($request->all());
         $post->save();
 
-        return response()->json($post, 201);
+        return new PostResource($post);
     }
 
 

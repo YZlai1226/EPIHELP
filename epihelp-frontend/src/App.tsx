@@ -15,6 +15,7 @@ import PasswordReset from './pages/password-reset';
 import NotFoundPage from './pages/404';
 import NewPost from './pages/newpost';
 import Legal from './pages/legal';
+import SearchResults from './pages/searchresults';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/livechat" element={<LiveChat />} />
+        <Route path="/searchresults" element={<SearchResults />} />
         <Route path="*" element={<NotFoundPage />}
         />
       </Routes>
