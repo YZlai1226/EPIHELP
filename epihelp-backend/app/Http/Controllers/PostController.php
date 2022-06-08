@@ -42,7 +42,7 @@ class PostController extends Controller
 
         $post->title = $request->title;
         $post->content = $request->content;
-        $post->category_id = $request->category;
+        $post->category_id = $request->category_id;
         $post->user_id = $request->user_id;
         $post->save();
 

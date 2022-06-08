@@ -1,9 +1,35 @@
 import AppLayout from './../components/Layouts/AppLayout'
 import PostForm from './../components/Forms/PostForm'
-import { useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useAuth } from './../hooks/auth'
+import { createPost } from './../services/postsService'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const NewPost = () => {
   const { categoryId } = useParams<string>();
+  const { user } = useAuth({ middleware: 'auth' });
+  const [title, setTitle] = useState('');
+  const [category, setCategory] = useState('');
+  const [content, setContent] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (categoryId) {
+      setCategory(categoryId)
+    }
+  }, [])
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault()
+    console.log('HELLO')
+    console.log('title is', title)
+    console.log('category is', category)
+    console.log('content is', content)
+    console.log('user is', user._id)
+    const res: any = await createPost(user._id, title, category, content);
+    navigate(`/post/${res.data._id}`)
+  }
+
   return (
     <AppLayout
       header={
@@ -16,7 +42,18 @@ const NewPost = () => {
           <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div className="p-6 bg-white border-b border-gray-200">
               {categoryId &&
-              <PostForm categoryId={categoryId}/>}
+                <PostForm
+                  formTitle={'Ask your question'}
+                  showCategory={true}
+                  handleSubmit={handleSubmit}
+                  setTitle={setTitle}
+                  setContent={setContent}
+                  setCategory={setCategory}
+                  title={title}
+                  content={content}
+                  category={category}
+                />
+              }
             </div>
           </div>
         </div>

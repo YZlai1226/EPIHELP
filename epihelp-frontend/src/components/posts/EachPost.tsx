@@ -27,7 +27,7 @@ const EachPost: React.FC<EachPostProps> = (props) => (
         </span>
       </div>
       <div className='flex flex-col text-right'>
-        <span>last comment</span>
+        <span>last comment:</span>
         <span className='italic'>{props.post?.last_comment?.author_name}</span>
         <span className='italic text-right'>
           {`${props.post?.created_at.substring(0, 10)} `} {props.post?.last_comment?.created_at.substring(11, 16)}
