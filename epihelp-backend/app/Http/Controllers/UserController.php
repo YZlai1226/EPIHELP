@@ -49,7 +49,10 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->update($request->all());
+        $user->save();
+
+        return response()->json($user, 201);
     }
 
     /**

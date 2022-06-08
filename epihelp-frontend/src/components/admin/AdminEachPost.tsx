@@ -20,6 +20,12 @@ const AdminEachPost: React.FC<EachPostProps> = (props) => (
       >
         delete
       </Button>
+      &#160;
+      <Button
+        onClick={() => deletePost(props.post.id)}
+      >
+        Edit
+      </Button>
     </td>
   </tr>
 
