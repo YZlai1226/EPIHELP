@@ -20,6 +20,7 @@ class PostResource extends JsonResource
             'title' => $this->title,
             'content' => $this->content,
             'category' => $this->category->name,
+            'category_id' => $this->category->id,
             'author_id' => $this->user->id,
             'author_name' => $this->user->name,
             'comments' => CommentResource::collection($this->comments),

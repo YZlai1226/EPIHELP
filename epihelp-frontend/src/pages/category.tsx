@@ -4,12 +4,12 @@ import axios from 'axios'
 import { Category } from './../models/category';
 import { PostsManager } from './../components/posts/PostsManager';
 import Button from './../components/Button';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const CategoryPage: React.FC = () => {
   let navigate = useNavigate();
+  let { idURL } = useParams<string>();
   const [categoryData, setCategoryData] = useState<Category>();
-  const idURL = window.location.href.replace('http://localhost:3000/category/', '');
   const [managerName, setManagerName] = useState<string>();
 
   async function getCategoryData(id: string) {
@@ -48,6 +48,7 @@ const CategoryPage: React.FC = () => {
               <div className="flex gap-6 items-center">
                 <img src={`/images/${categoryData?.image_url}.jpg`} width='300px' alt="category" />
                 <span>{categoryData?.description}</span>
+                idURL: { idURL }
                 <Button
                   className="ml-3"
                   onClick={() => navigate(`/newpost/${categoryData?.id}`)}

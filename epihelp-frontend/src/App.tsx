@@ -28,7 +28,7 @@ function App() {
         <Route path="/password-reset/:token" element={<PasswordReset />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/legal" element={<Legal />} />
-        <Route path="/category/:category" element={<Category />} />
+        <Route path="/category/:idURL" element={<Category />} />
         <Route path="/post/:post" element={<Post />} />
         <Route path="/newpost/:categoryId" element={<NewPost />} />
         <Route path="/profile" element={<Profile />} />

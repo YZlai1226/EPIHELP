@@ -5,6 +5,7 @@ export interface Post {
     _id: string,
     title: string,
     category: string,
+    category_id: string,
     content: string,
     author_id: string,
     author_name: string, 
@@ -13,7 +14,6 @@ export interface Post {
     comments?: Comment[],
     number_of_comment?: number,
     last_comment?: Comment,
-    category_id: string
 }
 
 export interface PostSummary {

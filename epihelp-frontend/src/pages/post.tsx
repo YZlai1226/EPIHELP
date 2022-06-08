@@ -17,9 +17,9 @@ const PostPage = () => {
 
   useEffect(() => {
     getPostData(idURL)
-
+    
   }, [idURL]);
-
+  
   async function getPostData(id: string) {
     type postResponse = {
       data: Post;
@@ -27,11 +27,12 @@ const PostPage = () => {
     try {
       const res = await axios.get<postResponse>(`http://localhost:8000/api/posts/${id}`);
       setPostData({...res.data.data});
+      console.log('postData', res.data.data)
     } catch (e) {
       console.error(e);
     }
   }
-
+  
   function addComment() {
     getPostData(idURL);
   }
@@ -41,7 +42,7 @@ const PostPage = () => {
       header={
         <div className="flex justify-between">
           <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-            {postData?.category} / {postData?.title}
+            <a href={`/category/${postData?.category_id}`}>{postData?.category}</a> / {postData?.title}
           </h2>
           {user?._id === postData?.author_id && postData &&
             <EditPostModal postData={postData} setPostData={setPostData} getPostData={getPostData}/>
