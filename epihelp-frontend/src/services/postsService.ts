@@ -1,21 +1,27 @@
 import { Post } from './../models/post';
 import myAxios from './axios';
 
+type postResponse = {
+  data: Post;
+};
+
 export async function createPost(
   user_id: string,
   title: string,
-  category: string,
+  category_id: string,
   content: string
 ) {
+  console.log('HEREHRER')
   try {
-    myAxios.post('/posts', {
+    const res = await myAxios.post<postResponse>('/posts', {
       user_id: user_id,
       title: title,
-      category: category,
+      category_id: category_id,
       content: content
     })
+    return res;
   } catch (e) {
-    console.error(e)
+    console.error('createPost', e)
   }
 }
 
@@ -25,11 +31,8 @@ export async function editPost(
   content: string,
   category?: string
 ) {
-  type postResponse = {
-    data: Post;
-  };
   try {
-    const res = myAxios.put<postResponse>(`/posts/${id}`, {
+    const res = await myAxios.put<postResponse>(`/posts/${id}`, {
       title: title,
       content: content,
       category: category

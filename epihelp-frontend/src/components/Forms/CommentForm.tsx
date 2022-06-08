@@ -19,6 +19,7 @@ const CommentForm: React.FC<CommentFormProps> = (props) => {
       .then(() => {
         props.addComment();
       })
+    setContent('');
   }
 
   return (

@@ -7,19 +7,16 @@ type PostManagerProps = {
   posts: PostSummary[]
 }
 
-export const PostsManager: React.FC<PostManagerProps> = (props) => {
-  console.log(props.posts);
-  return (
-    <ComponentsLayout
-      title={
-        <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-          {props.managerName}
-        </h2>
-      }>
-      {props.posts.map((post) => (
-        <EachPost post={post} key={post.id} />
-      )
-      )}
-    </ComponentsLayout>
-  )
-}
+export const PostsManager: React.FC<PostManagerProps> = (props) => (
+  <ComponentsLayout
+    title={
+      <h2 className="font-semibold text-xl text-gray-800 leading-tight">
+        {props.managerName}
+      </h2>
+    }>
+    {props.posts.map((post) => (
+      <EachPost post={post} key={post.id} />
+    )
+    )}
+  </ComponentsLayout>
+)

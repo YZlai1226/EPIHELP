@@ -3,6 +3,7 @@ import React, { FormEventHandler } from 'react'
 /* eslint-disable max-len */
 
 type postFormProps = {
+  categoryId?: string,
   formTitle: string,
   showCategory: boolean,
   // handleSubmit: FormEventHandler<HTMLFormElement>,
@@ -59,6 +60,7 @@ const PostForm: React.FC<postFormProps> = (props) =>
                 <select
                   id="category"
                   name="category"
+                  value={props.category}
                   onChange={(e) => props.setCategory?.(e.target.value)}
                   autoComplete="category"
                   className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm
@@ -101,7 +103,7 @@ const PostForm: React.FC<postFormProps> = (props) =>
 
             <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
               <button
-                onClick={() => {props.setOpen?.(false); props.handleSubmit('')}}
+                onClick={e => {props.setOpen?.(false); props.handleSubmit(e)}}
                 type="submit"
                 className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm
                     text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none

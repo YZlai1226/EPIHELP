@@ -1,7 +1,6 @@
 import React from 'react';
 import EachsLayout from './../Layouts/EachsLayout';
 import { Comment } from './../../models/comment';
-import { Link } from 'react-router-dom';
 
 type EachCommentProps = {
   Comment: Comment

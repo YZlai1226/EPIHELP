@@ -13,7 +13,6 @@ type EachCategoryProps = {
 
 const EachCategory: React.FC<EachCategoryProps> = (props) => (
   <Link to={`/category/${props.category?.id}`}>
-    {/* {console.log(`mainLogo: ${props.category?._id}`)} */}
     <ComponentsLayout
       title={
         <h2 className="font-semibold text-xl text-red-800">
@@ -21,7 +20,6 @@ const EachCategory: React.FC<EachCategoryProps> = (props) => (
         </h2>
       }>
 
-      {/* {console.log(`mainLogo: ${mainLogo}`)} */}
       <div className="flex gap-6 items-center">
         <img src={`/images/${props.category?.image_url}.jpg`} width='300px' alt="category" />
         <span>
