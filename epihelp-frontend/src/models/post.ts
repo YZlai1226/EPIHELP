@@ -2,6 +2,7 @@ import { Comment } from './comment'
 
 export interface Post {
     id: string,
+    _id: string,
     title: string,
     category: string,
     content: string,

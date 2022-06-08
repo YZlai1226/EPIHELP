@@ -2,10 +2,12 @@ import { Comment } from './comment'
 import { PostSummary } from './post'
 
 export interface User {
-    id: string,
+    _id: string,
     name: string,
     email: string,
     password: string,
+    year?: string,
+    formation?: string,
     posts?: PostSummary[],
     comments?: Comment[],
     role?: string,
