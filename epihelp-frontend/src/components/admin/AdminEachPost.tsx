@@ -1,9 +1,11 @@
 import React from 'react';
+import Button from './../Button';
 import { Post } from './../../models/post'
+import { deletePost } from './../../services/postsService'
 
 type EachPostProps = {
-    post: Post
-  }
+  post: Post
+}
 
 const AdminEachPost: React.FC<EachPostProps> = (props) => (
   <tr>
@@ -12,7 +14,13 @@ const AdminEachPost: React.FC<EachPostProps> = (props) => (
     <td className="border-separate border border-slate-300 h-24">{props.post.category}</td>
     <td className="border-separate border border-slate-300 h-24">{props.post.author_name}</td>
     <td className="border-separate border border-slate-300 h-24">{props.post.comments?.length}</td>
-    <td className="border-separate border border-slate-300 h-24"></td>
+    <td className="border-separate border border-slate-300 h-24">
+      <Button
+        onClick={() => deletePost(props.post.id)}
+      >
+        delete
+      </Button>
+    </td>
   </tr>
 
 )

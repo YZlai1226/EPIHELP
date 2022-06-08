@@ -41,3 +41,15 @@ export async function editPost(
     console.error(e);
   }
 }
+
+export async function deletePost(
+  id: string
+) {
+  try {
+    const res = await myAxios.delete<postResponse>(`/posts/${id}`);
+    window.location.reload();
+    return res
+  } catch (e) {
+    console.error(e);
+  }
+}

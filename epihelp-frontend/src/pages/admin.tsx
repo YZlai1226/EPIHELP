@@ -26,16 +26,25 @@ const Admin = () => {
   }
 
   useEffect(() => {
-    getUsers()
+    if (localStorage.getItem('categories') === 'true') {
+      getCategories()
+    }
+    else if (localStorage.getItem('posts') === 'true') {
+      getPosts()
+    }
+    else if (localStorage.getItem('users') === 'true') {
+      getUsers()
+    }
   }, []);
 
   function getCategories() {
     axios.get<CategoryResponse>('/categories')
       .then((response) => {
         setCategories(response.data.data)
-        setCategoryFlag(true)
-        setUserFlag(false)
-        setPostFlag(false)
+        window.localStorage.setItem('categories', 'true');
+        window.localStorage.removeItem('users');
+        window.localStorage.removeItem('posts');
+        checkLocalStorage()
       }
       )
   }
@@ -44,9 +53,10 @@ const Admin = () => {
     axios.get<PostResponse>('/posts')
       .then((response) => {
         setPosts(response.data.data);
-        setCategoryFlag(false)
-        setUserFlag(false)
-        setPostFlag(true)
+        window.localStorage.setItem('posts', 'true');
+        window.localStorage.removeItem('users');
+        window.localStorage.removeItem('categories');
+        checkLocalStorage()
       }
       )
   }
@@ -55,11 +65,30 @@ const Admin = () => {
     axios.get<User[]>('/users')
       .then((response) => {
         setUsers(response.data);
-        setCategoryFlag(false)
-        setUserFlag(true)
-        setPostFlag(false)
+        window.localStorage.setItem('users', 'true');
+        window.localStorage.removeItem('categories');
+        window.localStorage.removeItem('posts');
+        checkLocalStorage()
       }
       )
+  }
+
+  function checkLocalStorage() {
+    if (localStorage.getItem('categories') === 'true') {
+      setCategoryFlag(true)
+      setUserFlag(false)
+      setPostFlag(false)
+    }
+    else if (localStorage.getItem('users') === 'true') {
+      setUserFlag(true)
+      setCategoryFlag(false)
+      setPostFlag(false)
+    }
+    else if (localStorage.getItem('posts') === 'true') {
+      setPostFlag(true)
+      setUserFlag(false)
+      setCategoryFlag(false)
+    }
   }
 
   return (
