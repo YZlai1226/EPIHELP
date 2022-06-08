@@ -20,9 +20,9 @@ const PostForm: React.FC<PostFormProps> = (props) => {
     data: Post
   }
 
-  useEffect(() => {
+  /* useEffect(() => {
     setCategory(props.categoryId);
-  }, [props.categoryId]);
+  }, [props.categoryId]); */
 
   const handleSubmit = async (e: { preventDefault: () => void; }  ) => {
     e.preventDefault()
@@ -75,6 +75,7 @@ const PostForm: React.FC<PostFormProps> = (props) => {
                       id="category"
                       name="category"
                       onChange={(e) => setCategory(e.target.value)}
+                      value={props.categoryId}
                       autoComplete="category"
                       className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"

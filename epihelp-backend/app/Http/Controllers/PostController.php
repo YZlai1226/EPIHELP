@@ -76,7 +76,7 @@ class PostController extends Controller
         $post->update($request->all());
         $post->save();
 
-        return response()->json($post, 201);
+        return new PostResource($post);
     }
 
 
