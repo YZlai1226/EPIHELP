@@ -4,12 +4,12 @@ import axios from 'axios'
 import { Category } from './../models/category';
 import { PostsManager } from './../components/posts/PostsManager';
 import Button from './../components/Button';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const CategoryPage: React.FC = () => {
   let navigate = useNavigate();
   const [categoryData, setCategoryData] = useState<Category>();
-  const idURL = window.location.href.replace('http://localhost:3000/category/', '');
+  const {idURL} = useParams<string>();
   const [managerName, setManagerName] = useState<string>();
 
   async function getCategoryData(id: string) {
