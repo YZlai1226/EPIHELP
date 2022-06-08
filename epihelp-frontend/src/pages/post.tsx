@@ -11,7 +11,7 @@ import { useAuth } from './../hooks/auth'
 
 const PostPage = () => {
   const managerName = 'Comments'
-  const [postData, setpostData] = useState<Post>();
+  const [postData, setPostData] = useState<Post>();
   const idURL = window.location.href.replace('http://localhost:3000/post/', '')
   const { user } = useAuth({ middleware: 'auth' });
 
@@ -26,7 +26,7 @@ const PostPage = () => {
     };
     try {
       const res = await axios.get<postResponse>(`http://localhost:8000/api/posts/${id}`);
-      setpostData({...res.data.data});
+      setPostData({...res.data.data});
     } catch (e) {
       console.error(e);
     }
@@ -44,7 +44,7 @@ const PostPage = () => {
             {postData?.category} / {postData?.title}
           </h2>
           {user?._id === postData?.author_id && postData &&
-            <EditPostModal postData={postData} getPostData={getPostData}/>
+            <EditPostModal postData={postData} setPostData={setPostData} getPostData={getPostData}/>
           }
         </div>
       }>

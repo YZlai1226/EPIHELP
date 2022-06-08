@@ -9,6 +9,7 @@ import { Post } from './../../models/post'
 
 type editPostModalProps = {
   postData: Post,
+  setPostData: React.Dispatch<React.SetStateAction<Post | undefined>>,
   getPostData: (id: string) => Promise<void>
 }
 
@@ -21,14 +22,11 @@ const EditPostModal: React.FC<editPostModalProps> = (props) => {
   const [category, setCategory] = useState(props.postData.category);
 
   // const handleSubmit = (e: { preventDefault: () => void; }) => {
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     // e.preventDefault()
-    editPost(props.postData.id, title, content, category)
+    const res:any = await editPost(props.postData.id, title, content, category)
+    props.setPostData(res.data.data)
   }
-
-  useEffect(() => {
-    props.getPostData(props.postData.id)
-  }, [editPost])
 
   return (
     <div>
@@ -75,14 +73,7 @@ const EditPostModal: React.FC<editPostModalProps> = (props) => {
                           EDIT
                         </div>
                         <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                          {/* <Dialog.Title as="h3" className="text-lg leading-6 font-medium text-gray-900">
-                            Deactivate account
-                          </Dialog.Title> */}
                           <div className="mt-2">
-                            {/* <p className="text-sm text-gray-500">
-                              Are you sure you want to deactivate your account? All of your data will be permanently
-                              removed. This action cannot be undone.
-                            </p> */}
                             <PostForm
                               formTitle={'Edit your post'}
                               showCategory={false}

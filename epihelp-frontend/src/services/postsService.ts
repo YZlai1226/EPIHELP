@@ -29,11 +29,12 @@ export async function editPost(
     data: Post;
   };
   try {
-    myAxios.put<postResponse>(`/posts/${id}`, {
+    const res = myAxios.put<postResponse>(`/posts/${id}`, {
       title: title,
       content: content,
       category: category
     });
+    return res
   } catch (e) {
     console.error(e);
   }
