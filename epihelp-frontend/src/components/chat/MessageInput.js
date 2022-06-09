@@ -14,7 +14,7 @@ const NewMessage = ({socket}) => {
       <input
         autoFocus
         value={value}
-        placeholder="Type your message"
+        placeholder="What's on your mind?"
         onChange={(e) => {
           setValue(e.currentTarget.value);
         }}

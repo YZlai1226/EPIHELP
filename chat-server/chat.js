@@ -3,18 +3,20 @@ const uuidv4 = require('uuid').v4;
 const messages = new Set();
 const users = new Map();
 
+
 const defaultUser = {
   id: 'anon',
   name: 'Anonymous',
 };
 
-const messageExpirationTimeMS = 5*60 * 1000;
+const messageExpirationTimeMS = 5 * 60 * 1000;
 
 class Connection {
   constructor(io, socket) {
     this.socket = socket;
     this.io = io;
 
+    socket.on('username', (newUsername) => {if (newUsername) this.socket.username = newUsername});
     socket.on('getMessages', () => this.getMessages());
     socket.on('message', (value) => this.handleMessage(value));
     socket.on('disconnect', () => this.disconnect());
@@ -22,11 +24,11 @@ class Connection {
       console.log(`connect_error due to ${err.message}`);
     });
   }
-  
+
   sendMessage(message) {
     this.io.sockets.emit('message', message);
   }
-  
+
   getMessages() {
     messages.forEach((message) => this.sendMessage(message));
   }
@@ -34,10 +36,11 @@ class Connection {
   handleMessage(value) {
     const message = {
       id: uuidv4(),
-      user: users.get(this.socket) || defaultUser,
+      user: {name:this.socket.username || users.get(this.socket) || defaultUser},
       value,
       time: Date.now()
     };
+  // console.log("ID",  this.socket.username );
 
     messages.add(message);
     this.sendMessage(message);
@@ -58,8 +61,24 @@ class Connection {
 
 function chat(io) {
   io.on('connection', (socket) => {
-    new Connection(io, socket);   
+    new Connection(io, socket);
   });
-};
+
+  // io.use((socket, next) => {
+  //   const token = socket.handshake.auth.token;
+  //   if (token) {
+  //     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+  //       if (err) {
+  //         return next(new Error('Authentication error'));
+  //       }
+  //       users.set(socket, {
+  //         id: decoded.id,
+  //         name: decoded.name,
+  //       });
+  //     });
+  //   }
+  // })
+}
+// console.log("USER SOCKET", this.socket.auth);
 
 module.exports = chat;
