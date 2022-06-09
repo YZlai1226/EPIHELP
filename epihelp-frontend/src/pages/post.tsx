@@ -14,6 +14,7 @@ const PostPage = () => {
   const [postData, setPostData] = useState<Post>();
   const idURL = window.location.href.replace('http://localhost:3000/post/', '')
   const { user } = useAuth({ middleware: 'auth' });
+  const [showCategory, setShowCategory] = useState<boolean>(false)
 
   useEffect(() => {
     getPostData(idURL)
@@ -45,7 +46,7 @@ const PostPage = () => {
             <a href={`/category/${postData?.category_id}`}>{postData?.category}</a> / {postData?.title}
           </h2>
           {user?._id === postData?.author_id && postData &&
-            <EditPostModal postData={postData} setPostData={setPostData} getPostData={getPostData}/>
+            <EditPostModal postData={postData} setPostData={setPostData} showCategory={showCategory}/>
           }
         </div>
       }>

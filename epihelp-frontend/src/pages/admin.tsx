@@ -52,6 +52,8 @@ const Admin = () => {
   function getPosts() {
     axios.get<PostResponse>('/posts')
       .then((response) => {
+        console.log('======')
+        console.log('in get postsssss', response.data.data)
         setPosts(response.data.data);
         window.localStorage.setItem('posts', 'true');
         window.localStorage.removeItem('users');
@@ -147,7 +149,7 @@ const Admin = () => {
                     <h1>Posts</h1>
                   </div>
                   <br />
-                  <AdminPostManager posts={posts}></AdminPostManager>
+                  <AdminPostManager posts={posts} getPosts={getPosts} getCategories={getCategories}></AdminPostManager>
                 </>
               }
             </div>

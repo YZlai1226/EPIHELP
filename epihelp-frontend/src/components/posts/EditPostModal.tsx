@@ -10,7 +10,8 @@ import { Post } from './../../models/post'
 type editPostModalProps = {
   postData: Post,
   setPostData: React.Dispatch<React.SetStateAction<Post | undefined>>,
-  getPostData: (id: string) => Promise<void>
+  showCategory: boolean
+  // getPostData: (id: string) => Promise<void>
 }
 
 const EditPostModal: React.FC<editPostModalProps> = (props) => {
@@ -20,6 +21,7 @@ const EditPostModal: React.FC<editPostModalProps> = (props) => {
   const [title, setTitle] = useState(props.postData.title);
   const [content, setContent] = useState(props.postData.content);
   const [category, setCategory] = useState(props.postData.category);
+  const [showCategory, setShowCategory] = useState<boolean>(false)
 
   // const handleSubmit = (e: { preventDefault: () => void; }) => {
   const handleSubmit = async (e: any) => {
@@ -76,13 +78,15 @@ const EditPostModal: React.FC<editPostModalProps> = (props) => {
                           <div className="mt-2">
                             <PostForm
                               formTitle={'Edit your post'}
-                              showCategory={false}
+                              showCategory={props.showCategory}
                               handleSubmit={handleSubmit}
                               setTitle={setTitle}
                               setContent={setContent}
                               setOpen={setOpen}
                               title={title}
                               content={content}
+                              setCategory={setCategory}
+                              category={category}
                             />
                           </div>
                         </div>
