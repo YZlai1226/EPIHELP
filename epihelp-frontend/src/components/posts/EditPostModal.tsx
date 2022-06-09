@@ -27,6 +27,7 @@ const EditPostModal: React.FC<editPostModalProps> = (props) => {
   // const handleSubmit = (e: { preventDefault: () => void; }) => {
   const handleSubmit = async (e: any) => {
     e.preventDefault()
+    setOpen(false);
     const res:any = await editPost(props.postData.id, title, content, category)
     props.setPostData(res.data.data)
   }

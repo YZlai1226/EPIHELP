@@ -15,12 +15,6 @@ const EachComment: React.FC<EachCommentProps> = (props) => {
   // const idURL = window.location.href.replace('http://localhost:3000/post/', '')
   // const managerName = 'Comments'
 
-  useEffect(() => {
-    console.log('user is', user?._id)
-    console.log('author_id is', commentData?.author_id)
-    console.log('commentData is', commentData)
-  })
-
   return (
     <EachsLayout
       title={
