@@ -6,7 +6,7 @@ import { useAuth } from './../../hooks/auth';
 
 const LiveChatComponent = () => {
   const { user } = useAuth({ middleware: 'auth' });
-  console.log('USER',user?.name);
+ // console.log('USER',user?.name);
   // socket.join(user.name)
 
   const [socket, setSocket] = useState(null);
