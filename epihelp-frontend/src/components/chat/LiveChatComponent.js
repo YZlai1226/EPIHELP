@@ -26,7 +26,7 @@ useEffect(() => {
   return (
     <div className="App">
       <header className="app-header">
-        React Chat
+       Epihelp Chat
       </header>
       {socket ? (
         <div className="chat-container">
