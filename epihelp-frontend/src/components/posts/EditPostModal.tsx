@@ -20,11 +20,12 @@ const EditPostModal: React.FC<editPostModalProps> = (props) => {
   const { user } = useAuth({ middleware: 'auth' });
   const [title, setTitle] = useState(props.postData.title);
   const [content, setContent] = useState(props.postData.content);
-  const [category, setCategory] = useState(props.postData.category);
+  const [category, setCategory] = useState(props.postData.category_id);
 
   // const handleSubmit = (e: { preventDefault: () => void; }) => {
   const handleSubmit = async (e: any) => {
     e.preventDefault()
+    setOpen(false);
     const res:any = await editPost(props.postData.id, title, content, category)
     props.setPostData(res.data.data)
   }
