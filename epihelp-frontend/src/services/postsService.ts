@@ -4,6 +4,10 @@ import myAxios from './axios';
 type postResponse = {
   data: Post;
 };
+///////////////////////// TEST //////////////////////////
+
+
+///////////////////////// TEST //////////////////////////
 
 export async function createPost(
   user_id: string,

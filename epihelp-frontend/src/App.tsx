@@ -16,28 +16,33 @@ import NotFoundPage from './pages/404';
 import NewPost from './pages/newpost';
 import Legal from './pages/legal';
 import SearchResults from './pages/searchresults';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
     <div className="antialiased">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/password-reset/:token" element={<PasswordReset />} />
-        <Route path="/categories" element={<Categories />} />
-        <Route path="/legal" element={<Legal />} />
-        <Route path="/category/:idURL" element={<Category />} />
-        <Route path="/post/:post" element={<Post />} />
-        <Route path="/newpost/:categoryId" element={<NewPost />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/livechat" element={<LiveChat />} />
-        <Route path="/searchresults" element={<SearchResults />} />
-        <Route path="*" element={<NotFoundPage />}
-        />
-      </Routes>
+      <React.StrictMode>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/password-reset/:token" element={<PasswordReset />} />
+            <Route path="/categories" element={<Categories />} />
+            <Route path="/legal" element={<Legal />} />
+            <Route path="/category/:idURL" element={<Category />} />
+            <Route path="/post/:post" element={<Post />} />
+            <Route path="/newpost/:categoryId" element={<NewPost />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/livechat" element={<LiveChat />} />
+            <Route path="/searchresults" element={<SearchResults />} />
+            <Route path="*" element={<NotFoundPage />}
+            />
+          </Routes>
+        </BrowserRouter>
+      </React.StrictMode>,
     </div>
   );
 }
