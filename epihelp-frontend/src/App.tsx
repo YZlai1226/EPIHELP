@@ -15,6 +15,7 @@ import PasswordReset from './pages/password-reset';
 import NotFoundPage from './pages/404';
 import NewPost from './pages/newpost';
 import Legal from './pages/legal';
+import Cgu from './pages/cgu';
 import SearchResults from './pages/searchresults';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/password-reset/:token" element={<PasswordReset />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/legal" element={<Legal />} />
+        <Route path="/cgu" element={<Cgu />} />
         <Route path="/category/:idURL" element={<Category />} />
         <Route path="/post/:post" element={<Post />} />
         <Route path="/newpost/:categoryId" element={<NewPost />} />
