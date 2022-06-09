@@ -22,20 +22,16 @@ const Navigation: React.FC<NavigationProps> = ({ user }) => {
           <div className="flex">
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
-              <Link to="/categories">
+              <Link to="/main">
                 {/* <ApplicationLogo className="block h-10 w-auto fill-current text-gray-600" /> */}
                 <h1>
                   Epihelp
                 </h1>
               </Link>
             </div>
-            {/* Navigation Links */}
+      
             <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-              {/* <CustomNavLink
-                to='/categories'
-              >
-                Categories
-              </CustomNavLink> */}
+
               <CustomNavLink
                 to='/profile'
               >
@@ -124,7 +120,7 @@ const Navigation: React.FC<NavigationProps> = ({ user }) => {
         <div className="block sm:hidden">
           <div className="pt-2 pb-3 space-y-1">
             <ResponsiveNavLink
-              to="/categories"
+              to="/main"
             >
               Dashboard
             </ResponsiveNavLink>

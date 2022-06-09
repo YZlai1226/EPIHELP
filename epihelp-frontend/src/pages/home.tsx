@@ -11,10 +11,10 @@ function Home() {
       <div className="hidden fixed top-0 right-0 px-6 py-4 sm:block">
         {user ?
           <NavLink
-            to="/categories"
+            to="/main"
             className="ml-4 text-sm text-gray-700 underline"
           >
-            Categories
+            Main Page
           </NavLink>
           :
           <>

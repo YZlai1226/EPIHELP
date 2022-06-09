@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import Categories from './pages/categories';
+import Main from './pages/main';
 import Category from './pages/category';
 import Post from './pages/post';
 import Profile from './pages/profile';
@@ -27,7 +27,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/password-reset/:token" element={<PasswordReset />} />
-        <Route path="/categories" element={<Categories />} />
+        <Route path="/main" element={<Main />} />
         <Route path="/legal" element={<Legal />} />
         <Route path="/cgu" element={<Cgu />} />
         <Route path="/category/:idURL" element={<Category />} />
