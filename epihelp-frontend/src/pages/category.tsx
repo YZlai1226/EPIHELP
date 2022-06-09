@@ -48,7 +48,6 @@ const CategoryPage: React.FC = () => {
               <div className="flex gap-6 items-center">
                 <img src={`/images/${categoryData?.image_url}.jpg`} width='300px' alt="category" />
                 <span>{categoryData?.description}</span>
-                idURL: { idURL }
                 <Button
                   className="ml-3"
                   onClick={() => navigate(`/newpost/${categoryData?.id}`)}
