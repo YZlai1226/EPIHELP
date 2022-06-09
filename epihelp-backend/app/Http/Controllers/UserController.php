@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -49,7 +50,27 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $logged_user = User::find($request->loggedUserId);
+        if ($request->_id == $request->loggedUserId or $logged_user->role == 'admin') {
+            $user->update($request->all());
+            $user->save();
+            
+            return new UserResource($user);
+        } else {
+            return new Exception('Invalid user');
+        }
+    }
+    public function updateRole(Request $request, User $user)
+    {
+        $logged_user = User::find($request->loggedUserId);
+        if ($logged_user->role == 'admin') {
+            $user->update($request->role);
+            $user->save();
+            
+            return new UserResource($user);
+        } else {
+            return new Exception('Invalid user');
+        }
     }
 
     /**

@@ -25,7 +25,11 @@ class User extends Authenticatable
         'email',
         'password',
         'posts',
-        'comments'
+        'comments',
+        'formation',
+        'city',
+        'year',
+        'bio'
     ];
 
     /**

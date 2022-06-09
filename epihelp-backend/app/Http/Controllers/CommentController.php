@@ -72,7 +72,7 @@ class CommentController extends Controller
         $comment->update($request->all());
         $comment->save();
 
-        return response()->json($comment, 201);
+        return new CommentResource($comment);
     }
 
     /**

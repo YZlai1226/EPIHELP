@@ -6,6 +6,7 @@ import axios from 'axios'
 import CommentsManager from './../components/comments/CommentsManager'
 import EditPostModal from './../components/posts/EditPostModal'
 import { useAuth } from './../hooks/auth'
+import { createComment } from './../services/commentsService'
 
 /* eslint-disable max-len */
 
@@ -14,27 +15,35 @@ const PostPage = () => {
   const [postData, setPostData] = useState<Post>();
   const idURL = window.location.href.replace('http://localhost:3000/post/', '')
   const { user } = useAuth({ middleware: 'auth' });
+  const [showCategory, setShowCategory] = useState<boolean>(false)
+  const [content, setContent] = useState('');
 
   useEffect(() => {
     getPostData(idURL)
-    
+
   }, [idURL]);
-  
+
   async function getPostData(id: string) {
     type postResponse = {
       data: Post;
     };
     try {
       const res = await axios.get<postResponse>(`http://localhost:8000/api/posts/${id}`);
-      setPostData({...res.data.data});
-      console.log('postData', res.data.data)
+      setPostData({ ...res.data.data });
     } catch (e) {
       console.error(e);
     }
   }
-  
-  function addComment() {
-    getPostData(idURL);
+
+  const handleSubmit = (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    if (postData) {
+      createComment(user._id, postData.id, content)
+        .then(() => {
+          getPostData(idURL);
+        })
+      setContent('');
+    }
   }
 
   return (
@@ -45,7 +54,7 @@ const PostPage = () => {
             <a href={`/category/${postData?.category_id}`}>{postData?.category}</a> / {postData?.title}
           </h2>
           {user?._id === postData?.author_id && postData &&
-            <EditPostModal postData={postData} setPostData={setPostData} getPostData={getPostData}/>
+            <EditPostModal postData={postData} setPostData={setPostData} showCategory={showCategory}/>
           }
         </div>
       }>
@@ -71,7 +80,7 @@ const PostPage = () => {
       {postData?.comments &&
         <CommentsManager managerName={managerName} Comments={postData?.comments} />
       }
-      <CommentForm post_id={idURL} addComment={addComment} />
+      <CommentForm content={content} handleSubmit={handleSubmit} setContent={setContent}/>
 
     </AppLayout>
   )

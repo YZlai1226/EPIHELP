@@ -14,3 +14,19 @@ export async function deleteCategory(id: String) {
     console.log(e)
   }
 }
+
+export async function editCategory(
+  id: string,
+  name: string,
+  description: string
+) {
+  try {
+    const res = await myAxios.put<categoryResponse>(`/categories/${id}`, {
+      name: name,
+      description: description
+    });
+    return res
+  } catch (e) {
+    console.error(e);
+  }
+}

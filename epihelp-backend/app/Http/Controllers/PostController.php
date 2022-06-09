@@ -21,7 +21,7 @@ class PostController extends Controller
         // return response()->json(Post::all());
         // $post = new PostResource(Post::all());
         // return $post;
-        return PostResource::collection(Post::all());
+        return PostSummary::collection(Post::all());
         
     }
 
