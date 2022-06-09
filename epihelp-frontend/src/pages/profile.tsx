@@ -7,12 +7,14 @@ import ComponentsLayout from './../components/Layouts/ComponentsLayout';
 import CommentsManager from './../components/comments/CommentsManager';
 import EditProfileModal from './../components/profile/EditProfileModal';
 import myAxios from './../services/axios';
+import axios from 'axios';
 
 const Profile: React.FC = () => {
 
   const { user } = useAuth({ middleware: 'auth' });
   const [userData, setUserData] = useState<User>();
   const [showRole, setShowRole] = useState<boolean>(false)
+  const [profilePic, setProfilePic] = useState('');
 
   async function getUserData(_id: string) {
     type userResponse = {
@@ -26,8 +28,15 @@ const Profile: React.FC = () => {
     }
   }
 
+  async function getProfilePicture() {
+    const res:any = await axios('https://randomuser.me/api/');
+    console.log('res:', res.data.results[0].picture.large);
+    setProfilePic(res.data.results[0].picture.large);
+  }
+
   useEffect(() => {
-    getUserData(user?._id)
+    getUserData(user?._id);
+    getProfilePicture();
   }, [user]);
 
   return (
@@ -51,6 +60,13 @@ const Profile: React.FC = () => {
                       My informations
                     </h2>
                   }>
+                  <img
+                    className="w-24 h-24 md:w-48 md:h-auto rounded-full"
+                    src={profilePic}
+                    alt="profile"
+                    width="400" height="400">
+                  </img>
+                  <br></br>
                   <h1><strong>Username:</strong> {userData.name}</h1>
                   <p><strong>Email:</strong> {userData.email}</p>
                   <p><strong>Member since</strong> {userData.created_at.substring(0, 10)}</p>

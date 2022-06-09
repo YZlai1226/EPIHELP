@@ -55,7 +55,7 @@ const EditProfileModal: React.FC<editProfileModalProps> = (props) => {
       }
     }
   }
-
+  
   return (
     <div>
 

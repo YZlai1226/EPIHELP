@@ -15,12 +15,13 @@ class CategoryResource extends JsonResource
      */
     public function toArray($request)
     {
+        $sorted = $this->posts->sortBy('updated_at', SORT_REGULAR, true);
         return [
             'id' => $this->id,
             'name' => $this->name,  
             'description' => $this->description,
             'image_url' => $this->image_url,
-            'posts' => PostSummary::collection($this->posts),
+            'posts' => PostSummary::collection($sorted),
             //title, author, date et heure de création, dernière réponse (date et auteur), nombre de commentaires, 
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
