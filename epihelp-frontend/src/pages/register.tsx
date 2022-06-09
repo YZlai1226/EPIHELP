@@ -6,7 +6,7 @@ import Input from './../components/Input'
 import Label from './../components/Label'
 import { useAuth } from './../hooks/auth'
 import { useState } from 'react'
-import {Link, NavLink} from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Register = () => {
   const { register } = useAuth({
@@ -33,6 +33,34 @@ const Register = () => {
         }>
         {/* Validation Errors */}
         <AuthValidationErrors className="mb-4" errors={errors} />
+        <div className="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+          <strong>
+            Whether you’ve come to ask questions or to generously share what you know,
+            join us in building a community where all people feel welcome and can participate,
+            regardless of expertise or identity.
+          </strong>
+          <ul>
+            <li>
+              If you’re here to get help, make it as easy as possible for others to help you.
+              Follow our guidelines and remember that our community is made possible by volunteers.
+            </li>
+            <li>
+              If you’re here to help others, be patient and welcoming.
+              Learning how to participate in our community can be hard.
+              Offer support if you see someone struggling or otherwise in need of help.
+            </li>
+            <li>
+              Be clear and constructive when giving feedback, and be open when receiving it.
+              Edits, comments, and suggestions are healthy parts of our community.
+            </li>
+            <li>
+              Be inclusive and respectful. Avoid sarcasm and be careful with jokes — tone is hard to decipher online.
+              Prefer gender-neutral language when uncertain.
+              If a situation makes it hard to be friendly, stop participating and move on.
+            </li>
+          </ul>
+        </div>
+        <br></br>
         <form onSubmit={submitForm}>
           {/* Name */}
           <div>
@@ -75,7 +103,7 @@ const Register = () => {
           {/* Confirm Password */}
           <div className="mt-4">
             <Label htmlFor="password_confirmation">
-                Confirm Password
+              Confirm Password
             </Label>
             <Input
               id="password_confirmation"
@@ -88,12 +116,27 @@ const Register = () => {
               required
             />
           </div>
+          {/* Confirm Password */}
+          <div className="mt-4">
+            <input
+              id="comments"
+              name="comments"
+              type="checkbox"
+              className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+            />
+            <span> </span>
+            <span>
+              I have read and agree to the <Link to='/cgu'>terms and conditions</Link>.
+            </span>
+            <div className="flex items-center h-5">
+            </div>
+          </div>
           <div className="flex items-center justify-end mt-4">
             <NavLink
               to="/login"
               className="underline text-sm text-gray-600 hover:text-gray-900"
             >
-                Already registered?
+              Already registered?
             </NavLink>
             <Button className="ml-4">Register</Button>
           </div>
