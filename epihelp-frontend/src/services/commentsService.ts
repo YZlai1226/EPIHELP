@@ -1,6 +1,10 @@
 import { Comment } from './../models/comment';
 import myAxios from './axios';
 
+type postResponse = {
+  data: Comment;
+};
+
 export async function createComment(
   user_id: string,
   post_id: string,
@@ -22,14 +26,12 @@ export async function editComment(
   id: string,
   content: string
 ) {
-  type postResponse = {
-    data: Comment;
-  };
   try {
-    myAxios.put<postResponse>(`/posts/${id}`, {
+    const res = await myAxios.put<postResponse>(`/comments/${id}`, {
       content: content
     });
+    return res
   } catch (e) {
-    console.error(e);
+    console.error('editComment', e);
   }
 }
