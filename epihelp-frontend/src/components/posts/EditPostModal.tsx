@@ -11,7 +11,7 @@ import EditButton from './../EditButton'
 type editPostModalProps = {
   postData: Post,
   setPostData: React.Dispatch<React.SetStateAction<Post | undefined>>,
-  getPostData: (id: string) => Promise<void>
+  // getPostData: (id: string) => Promise<void>
 }
 
 const EditPostModal: React.FC<editPostModalProps> = (props) => {
@@ -77,20 +77,13 @@ const EditPostModal: React.FC<editPostModalProps> = (props) => {
                               setOpen={setOpen}
                               title={title}
                               content={content}
+                              category={category}
                             />
                           </div>
                         </div>
                       </div>
                     </div>
                     <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                      {/* <button
-                        type="button"
-                        className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                        onClick={() => setOpen(false)}
-                        ref={cancelButtonRef}
-                      >
-                        Cancel
-                      </button> */}
                     </div>
                   </Dialog.Panel>
                 </Transition.Child>

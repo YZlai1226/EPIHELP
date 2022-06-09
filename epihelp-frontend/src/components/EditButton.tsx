@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 
 type EditButtonProps = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>,
-  color: string
+  color: string,
 }
 
 const EditButton: React.FC<EditButtonProps> = (props) => (

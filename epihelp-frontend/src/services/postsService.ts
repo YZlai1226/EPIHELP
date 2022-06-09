@@ -34,7 +34,7 @@ export async function editPost(
     const res = await myAxios.put<postResponse>(`/posts/${id}`, {
       title: title,
       content: content,
-      category: category
+      category_id: category
     });
     return res
   } catch (e) {

@@ -1,8 +1,5 @@
 import React, { FormEventHandler } from 'react'
 
-type PostFormProps = {
-  categoryId: string
-}
 /* eslint-disable max-len */
 
 type postFormProps = {
