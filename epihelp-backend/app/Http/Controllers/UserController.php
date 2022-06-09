@@ -64,7 +64,7 @@ class UserController extends Controller
     {
         $logged_user = User::find($request->loggedUserId);
         if ($logged_user->role == 'admin') {
-            $user->update($request->role);
+            $user->update($request->all());
             $user->save();
             
             return new UserResource($user);

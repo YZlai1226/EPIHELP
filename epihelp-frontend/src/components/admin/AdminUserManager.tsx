@@ -5,6 +5,12 @@ import AdminEachUser from './AdminEachUser'
 
 type UserProps = {
   users: User[]
+  setUserData: React.Dispatch<React.SetStateAction<User | undefined>>
+  getUsers:() => void
+  // setUserRole: React.Dispatch<React.SetStateAction<string>>
+  // setUserId: React.Dispatch<React.SetStateAction<string>>
+  // handleSubmit: any
+  // userRole: string
 }
 
 const AdminUserManager: React.FC<UserProps> = (props) => (
@@ -22,7 +28,7 @@ const AdminUserManager: React.FC<UserProps> = (props) => (
     </thead>
     <tbody>
       {props.users.map((user) => (
-        <AdminEachUser user={user} key={user._id} />
+        <AdminEachUser user={user} key={user._id} setUserData={props.setUserData} getUsers={props.getUsers}/>
       )
       )}
     </tbody>

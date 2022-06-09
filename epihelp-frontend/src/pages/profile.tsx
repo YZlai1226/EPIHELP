@@ -12,6 +12,7 @@ const Profile: React.FC = () => {
 
   const { user } = useAuth({ middleware: 'auth' });
   const [userData, setUserData] = useState<User>();
+  const [showRole, setShowRole] = useState<boolean>(false)
 
   async function getUserData(_id: string) {
     type userResponse = {
@@ -62,6 +63,7 @@ const Profile: React.FC = () => {
                   <EditProfileModal
                     userData={userData}
                     setUserData={setUserData}
+                    showRole={showRole}
                   />
                 </ComponentsLayout>
                 {userData?.posts &&

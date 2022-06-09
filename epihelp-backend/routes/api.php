@@ -39,7 +39,7 @@ Route::get('search/{category}/{query}', function ($category, $query) {
     }
     return PostSummary::collection($response);
 });
-Route::post('users/role/{user}', [UserController::class, 'updateRole']);
+Route::put('users/role/{user}', [UserController::class, 'updateRole']);
 /* Route::get('search/{query}', function($query) {
     $response = Article::whereRaw(array('$text'=>array('$search'=> $query)))->get();
     return $response;
