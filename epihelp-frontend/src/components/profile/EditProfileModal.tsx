@@ -35,7 +35,7 @@ const EditProfileModal: React.FC<editProfileModalProps> = (props) => {
     );
     props.setUserData(res.data);
   }
-
+  
   return (
     <div>
 
