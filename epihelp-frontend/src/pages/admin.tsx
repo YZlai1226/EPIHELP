@@ -7,12 +7,12 @@ import { User } from './../models/user'
 import AdminCategoryManager from './../components/admin/AdminCategoryManager'
 import AdminUserManager from './../components/admin/AdminUserManager'
 import AdminPostManager from './../components/admin/AdminPostManager'
-import { Post } from './../models/post'
+import { Post, PostSummary } from './../models/post'
 
 const Admin = () => {
   const [categories, setCategories] = useState<Category[]>([])
   const [users, setUsers] = useState<User[]>([])
-  const [posts, setPosts] = useState<Post[]>([])
+  const [posts, setPosts] = useState<PostSummary[]>([])
   const [categoryFlag, setCategoryFlag] = useState<boolean>(false)
   const [userFlag, setUserFlag] = useState<boolean>(false)
   const [postFlag, setPostFlag] = useState<boolean>(false)
@@ -22,7 +22,7 @@ const Admin = () => {
   }
 
   type PostResponse = {
-    data: Post[]
+    data: PostSummary[]
   }
 
   useEffect(() => {
@@ -52,8 +52,6 @@ const Admin = () => {
   function getPosts() {
     axios.get<PostResponse>('/posts')
       .then((response) => {
-        console.log('======')
-        console.log('in get postsssss', response.data.data)
         setPosts(response.data.data);
         window.localStorage.setItem('posts', 'true');
         window.localStorage.removeItem('users');

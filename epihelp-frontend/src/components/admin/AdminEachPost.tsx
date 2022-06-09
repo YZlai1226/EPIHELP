@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import Button from './../Button';
-import { Post } from './../../models/post'
+import { Post, PostSummary } from './../../models/post'
 import { deletePost } from './../../services/postsService'
 import EditPostModal from './../../components/posts/EditPostModal'
 
 /* eslint-disable max-len */
 
 type EachPostProps = {
-  post: Post,
+  post: PostSummary,
   getPosts: () => void
   getCategories: () => void
 }
 
 const AdminEachPost: React.FC<EachPostProps> = (props) => {
-  const [postData, setPostData] = useState<Post>()
+  const [postData, setPostData] = useState<PostSummary>()
   const [showCategory, setShowCategory] = useState<boolean>(false)
 
   useEffect(() => {
@@ -21,9 +21,10 @@ const AdminEachPost: React.FC<EachPostProps> = (props) => {
     setShowCategory(true)
   }, [])
 
-  // useEffect(() => {
-  //   props.getPosts()
-  // }, [postData])
+  useEffect(() => {
+    props.getPosts()
+    console.log('123456789')
+  }, [postData])
 
   return (
     <tr>
@@ -31,7 +32,7 @@ const AdminEachPost: React.FC<EachPostProps> = (props) => {
       <td className="border-separate border border-slate-300 h-24">{props.post.title}</td>
       <td className="border-separate border border-slate-300 h-24">{props.post.category}</td>
       <td className="border-separate border border-slate-300 h-24">{props.post.author_name}</td>
-      <td className="border-separate border border-slate-300 h-24">{props.post.comments?.length}</td>
+      <td className="border-separate border border-slate-300 h-24">{props.post.number_of_comments}</td>
       <td className="border-separate border border-slate-300 h-24 flex justify-center">
         <button
           className="block px-2.5 py-2.5 text-center dark:hover:bg-gray-300"

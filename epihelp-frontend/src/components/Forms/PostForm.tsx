@@ -3,9 +3,6 @@ import React, { FormEventHandler, useEffect, useState } from 'react'
 import { Category } from './../../models/category'
 import axios from './../../services/axios'
 
-type PostFormProps = {
-  categoryId: string
-}
 /* eslint-disable max-len */
 
 type postFormProps = {
@@ -29,17 +26,15 @@ const PostForm: React.FC<postFormProps> = (props) => {
   const [categories, setCategories] = useState<Category[]>([])
 
   useEffect(() => {
-    function getCategories() {
       type CategoryResponse = {
         data: Category[]
       };
       axios.get<CategoryResponse>('/categories')
         .then((response) => {
+          console.log('here here in post form')
           setCategories(response.data.data)
         }
         )
-    }
-    getCategories()
   }, [])
 
   return (

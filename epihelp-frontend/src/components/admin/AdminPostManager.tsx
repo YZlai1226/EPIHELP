@@ -1,10 +1,10 @@
 import { type } from '@testing-library/user-event/dist/type';
 import React from 'react';
-import { Post } from './../../models/post'
+import { Post, PostSummary } from './../../models/post'
 import AdminEachPost from './AdminEachPost'
 
 type PostManagerProps = {
-  posts: Post[],
+  posts: PostSummary[],
   getPosts:() => void
   getCategories:() => void
 }

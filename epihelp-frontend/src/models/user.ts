@@ -12,6 +12,8 @@ export interface User {
     comments?: Comment[],
     role?: string,
     tags?: string[],
+    city?: string,
+    bio?: string,
     created_at: string,
     updated_at: string,
 }
