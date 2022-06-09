@@ -27,10 +27,9 @@ const PostPage = () => {
     try {
       const res = await axios.get<postResponse>(`http://localhost:8000/api/posts/${id}`);
       setPostData({...res.data.data});
-      console.log('postData', res.data.data)
     } catch (e) {
       console.error(e);
-    }
+    } 
   }
   
   function addComment() {

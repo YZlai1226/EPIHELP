@@ -21,11 +21,6 @@ const NewPost = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault()
-    console.log('HELLO')
-    console.log('title is', title)
-    console.log('category is', category)
-    console.log('content is', content)
-    console.log('user is', user._id)
     const res: any = await createPost(user._id, title, category, content);
     navigate(`/post/${res.data._id}`)
   }

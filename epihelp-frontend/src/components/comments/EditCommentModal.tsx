@@ -8,13 +8,13 @@ import EditButton from './../EditButton'
 
 /* eslint-disable max-len */
 
-type editPostModalProps = {
-  postData: Post,
-  setPostData: React.Dispatch<React.SetStateAction<Post | undefined>>,
-  getPostData: (id: string) => Promise<void>
+type editCommentModalProps = {
+  commentData: Comment,
+  // setPostData: React.Dispatch<React.SetStateAction<Post | undefined>>,
+  // getPostData: (id: string) => Promise<void>
 }
 
-const EditPostModal: React.FC<editPostModalProps> = (props) => {
+const EditCommentModal: React.FC<editCommentModalProps> = (props) => {
   const [open, setOpen] = useState(false)
   const cancelButtonRef = useRef(null)
   const { user } = useAuth({ middleware: 'auth' });
@@ -25,13 +25,13 @@ const EditPostModal: React.FC<editPostModalProps> = (props) => {
   // const handleSubmit = (e: { preventDefault: () => void; }) => {
   const handleSubmit = async (e: any) => {
     e.preventDefault()
-    const res:any = await editPost(props.postData.id, title, content, category)
+    const res: any = await editPost(props.postData.id, title, content, category)
     props.setPostData(res.data.data)
   }
 
   return (
     <div>
-      <EditButton setOpen={setOpen} color={'black'}/>
+      <EditButton setOpen={setOpen} color={'white'} />
 
       <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={() => setOpen(false)}>
@@ -103,4 +103,4 @@ const EditPostModal: React.FC<editPostModalProps> = (props) => {
   )
 }
 
-export default EditPostModal; 
+export default EditCommentModal; 
