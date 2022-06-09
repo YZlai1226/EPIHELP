@@ -5,8 +5,9 @@ type postResponse = {
   data: Post;
 };
 ///////////////////////// TEST //////////////////////////
-
-
+export function sum(a: number, b: number) {
+  return a + b;
+}
 ///////////////////////// TEST //////////////////////////
 
 export async function createPost(
