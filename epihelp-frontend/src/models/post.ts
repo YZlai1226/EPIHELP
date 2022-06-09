@@ -2,7 +2,7 @@ import { Comment } from './comment'
 
 export interface Post {
     id: string,
-    _id: string,
+    // _id: string,
     title: string,
     category: string,
     category_id: string,
@@ -21,6 +21,7 @@ export interface PostSummary {
     title: string,
     content: string,
     category: string,
+    category_id: string,
     author_id: string,
     author_name: string,
     created_at: string,

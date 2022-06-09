@@ -21,6 +21,11 @@ const AdminEachUser: React.FC<EachUserProps> = (props) => (
       >
         Delete
       </Button>
+      &#160;
+      <Button
+      >
+        Edit
+      </Button>
     </td>
   </tr>
 

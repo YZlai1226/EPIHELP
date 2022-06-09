@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from './../hooks/auth'
 import { createPost } from './../services/postsService'
 import { useNavigate, useParams } from 'react-router-dom'
+import axios from './../services/axios'
+import { Category } from './../models/category'
 
 const NewPost = () => {
   const { categoryId } = useParams<string>();
@@ -12,12 +14,26 @@ const NewPost = () => {
   const [category, setCategory] = useState('');
   const [content, setContent] = useState('');
   const navigate = useNavigate();
+  const [categories, setCategories] = useState<Category[]>([])
+  const [eachcategory, setEachCategory] = useState<Category>()
 
   useEffect(() => {
     if (categoryId) {
       setCategory(categoryId)
     }
+    getCategories()
   }, [])
+
+  function getCategories() {
+    type CategoryResponse = {
+      data: Category[];
+    };
+    axios.get<CategoryResponse>('/categories')
+      .then((response) => {
+        setCategories(response.data.data)
+      }
+      )
+  }
 
   const handleSubmit = async (e: any) => {
     e.preventDefault()
@@ -47,6 +63,8 @@ const NewPost = () => {
                   title={title}
                   content={content}
                   category={category}
+                  categories={categories}
+                  eachcategory={eachcategory}
                 />
               }
             </div>

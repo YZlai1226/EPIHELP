@@ -1,4 +1,7 @@
-import React, { FormEventHandler } from 'react'
+import React, { FormEventHandler, useEffect, useState } from 'react'
+// import CategoryManager from './../Category/CategoryManager'
+import { Category } from './../../models/category'
+import axios from './../../services/axios'
 
 /* eslint-disable max-len */
 
@@ -15,9 +18,26 @@ type postFormProps = {
   title: string,
   category?: string,
   content: string,
+  categories?: Category[]
+  eachcategory?: Category
 }
-const PostForm: React.FC<postFormProps> = (props) => 
-  (
+const PostForm: React.FC<postFormProps> = (props) => {
+
+  const [categories, setCategories] = useState<Category[]>([])
+
+  useEffect(() => {
+      type CategoryResponse = {
+        data: Category[]
+      };
+      axios.get<CategoryResponse>('/categories')
+        .then((response) => {
+          console.log('here here in post form')
+          setCategories(response.data.data)
+        }
+        )
+  }, [])
+
+  return (
     <div className="md:grid md:grid-cols-3 md:gap-6">
       <div className="md:col-span-1">
         <div className="px-4 sm:px-0">
@@ -66,8 +86,10 @@ const PostForm: React.FC<postFormProps> = (props) =>
                   className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm
                       focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 >
-
-                  <option value='629661c6a3a87f9f730c9b02'>Software development</option>
+                  {categories?.map((category) => (
+                    <option key={category.id} value={category.id}>{category.name}</option>
+                  ))}
+                  {/* <option value='629661c6a3a87f9f730c9b02'>Software development</option>
                   <option value='62966202a3a87f9f730c9b03'>Web development</option>
                   <option value='62966272a3a87f9f730c9b04'>Security/Hacking</option>
                   <option value='6298863eb4671f842c0d7892'>Data/AI</option>
@@ -75,7 +97,7 @@ const PostForm: React.FC<postFormProps> = (props) =>
                   <option value='6298874fb4671f842c0d7894'>Job and Internship search</option>
                   <option value='62988856b4671f842c0d7895'>Entrepreneurship</option>
                   <option value='62988918b4671f842c0d7896'>Student life</option>
-                  <option value='62988fcab4671f842c0d7897'>General discussion</option>
+                  <option value='62988fcab4671f842c0d7897'>General discussion</option> */}
                 </select>
               </div>
             }
@@ -103,7 +125,8 @@ const PostForm: React.FC<postFormProps> = (props) =>
 
             <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
               <button
-                onClick={e => {console.log('STOP'); props.setOpen?.(false); props.handleSubmit(e)}}
+                onClick={e => { props.setOpen?.(false); props.handleSubmit(e) }}
+
                 type="submit"
                 className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm
                     text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none
@@ -117,4 +140,5 @@ const PostForm: React.FC<postFormProps> = (props) =>
       </div>
     </div>
   )
+}
 export default PostForm;

@@ -3,14 +3,15 @@ import { Dialog, Transition } from '@headlessui/react'
 import PostForm from './../Forms/PostForm'
 import { useAuth } from './../../hooks/auth'
 import { editPost } from './../../services/postsService'
-import { Post } from './../../models/post'
+import { Post, PostSummary } from './../../models/post'
 import EditButton from './../EditButton'
 
 /* eslint-disable max-len */
 
 type editPostModalProps = {
-  postData: Post,
-  setPostData: React.Dispatch<React.SetStateAction<Post | undefined>>,
+  postData: Post | PostSummary,
+  setPostData: React.Dispatch<React.SetStateAction<Post| PostSummary | undefined>>,
+  showCategory: boolean
   // getPostData: (id: string) => Promise<void>
 }
 
@@ -21,6 +22,7 @@ const EditPostModal: React.FC<editPostModalProps> = (props) => {
   const [title, setTitle] = useState(props.postData.title);
   const [content, setContent] = useState(props.postData.content);
   const [category, setCategory] = useState(props.postData.category_id);
+  const [showCategory, setShowCategory] = useState<boolean>(false)
 
   // const handleSubmit = (e: { preventDefault: () => void; }) => {
   const handleSubmit = async (e: any) => {
@@ -71,13 +73,14 @@ const EditPostModal: React.FC<editPostModalProps> = (props) => {
                           <div className="mt-2">
                             <PostForm
                               formTitle={'Edit your post'}
-                              showCategory={false}
+                              showCategory={props.showCategory}
                               handleSubmit={handleSubmit}
                               setTitle={setTitle}
                               setContent={setContent}
                               setOpen={setOpen}
                               title={title}
                               content={content}
+                              setCategory={setCategory}
                               category={category}
                             />
                           </div>
