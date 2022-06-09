@@ -34,25 +34,31 @@ const Register = () => {
         {/* Validation Errors */}
         <AuthValidationErrors className="mb-4" errors={errors} />
         <div className="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+          <h1>Code of conduct</h1>
+          <br />
           <strong>
             Whether you’ve come to ask questions or to generously share what you know,
             join us in building a community where all people feel welcome and can participate,
             regardless of expertise or identity.
           </strong>
           <ul>
+            <br />
             <li>
               If you’re here to get help, make it as easy as possible for others to help you.
               Follow our guidelines and remember that our community is made possible by volunteers.
             </li>
+            <br />
             <li>
               If you’re here to help others, be patient and welcoming.
               Learning how to participate in our community can be hard.
               Offer support if you see someone struggling or otherwise in need of help.
             </li>
+            <br />
             <li>
               Be clear and constructive when giving feedback, and be open when receiving it.
               Edits, comments, and suggestions are healthy parts of our community.
             </li>
+            <br />
             <li>
               Be inclusive and respectful. Avoid sarcasm and be careful with jokes — tone is hard to decipher online.
               Prefer gender-neutral language when uncertain.
