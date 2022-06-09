@@ -46,21 +46,21 @@ const EditProfileModal: React.FC<editProfileModalProps> = (props) => {
         Edit
       </Button>
 
-      <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={() => setOpen(false)}>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="translate-x-full opacity-0"
-            enterTo="translate-x-0 opacity-100"
-            leave="ease-in duration-300"
-            leaveFrom="translate-x-0 opacity-100"
-            leaveTo="translate-x-full opacity-0"
-          >
-            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
-          </Transition.Child>
+      {open === true &&
+        <Transition.Root show={open} as={Fragment}>
+          <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={() => setOpen(false)}>
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="translate-x-full opacity-0"
+              enterTo="translate-x-0 opacity-100"
+              leave="ease-in duration-300"
+              leaveFrom="translate-x-0 opacity-100"
+              leaveTo="translate-x-full opacity-0"
+            >
+              <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+            </Transition.Child>
 
-          {open === true &&
             <div className="fixed z-10 inset-0 overflow-y-auto">
               <div className="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
                 <Transition.Child
@@ -216,9 +216,9 @@ const EditProfileModal: React.FC<editProfileModalProps> = (props) => {
                 </Transition.Child>
               </div>
             </div >
-          }
-        </Dialog >
-      </Transition.Root >
+          </Dialog >
+        </Transition.Root >
+      }
     </div >
   )
 }
