@@ -54,7 +54,7 @@ const PostPage = () => {
             <a href={`/category/${postData?.category_id}`}>{postData?.category}</a> / {postData?.title}
           </h2>
           {user?._id === postData?.author_id && postData &&
-            <EditPostModal postData={postData} setPostData={setPostData} showCategory={showCategory}/>
+            <EditPostModal postData={postData} setPostData={setPostData} showCategory={showCategory} />
           }
         </div>
       }>
@@ -62,7 +62,7 @@ const PostPage = () => {
       <div className="py-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <div className="p-6 bg-white border-b border-gray-200">
+            <div className="p-6 bg-white border-b border-gray-200 flex">
               {postData?.content}
             </div>
             <div className='flex justify-between italic px-6'>
@@ -80,7 +80,7 @@ const PostPage = () => {
       {postData?.comments &&
         <CommentsManager managerName={managerName} Comments={postData?.comments} />
       }
-      <CommentForm content={content} handleSubmit={handleSubmit} setContent={setContent}/>
+      <CommentForm content={content} handleSubmit={handleSubmit} setContent={setContent} />
 
     </AppLayout>
   )

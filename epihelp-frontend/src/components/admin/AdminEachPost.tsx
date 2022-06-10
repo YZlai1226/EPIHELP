@@ -3,7 +3,7 @@ import Button from './../Button';
 import { Post, PostSummary } from './../../models/post'
 import { deletePost } from './../../services/postsService'
 import EditPostModal from './../../components/posts/EditPostModal'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 /* eslint-disable max-len */
 
@@ -22,20 +22,17 @@ const AdminEachPost: React.FC<EachPostProps> = (props) => {
     setShowCategory(true)
   }, [])
 
-  // useEffect(() => {
-  //   props.getPosts()
-  //   console.log('123456789')
-  // }, [postData])
-  // console.log('*****', postData)
+  // function LinkToPost(postId: string) {
+  //   window.location.href = '/post/'
+  // }
 
   return (
     <tr>
       <td className="border-separate border border-slate-300 h-24">{props.post.id}</td>
-      {/* <Link to={`/post/${props.post.title}`}> */}
-      <td className="border-separate border border-slate-300 h-24">{props.post.title}</td>
-      {/* <td className="border-separate border border-slate-300 h-24 hover:underline w-1/6">
-        <a href="/legal" className="hover:underline"> {props.post.title}</a>
-      </td> */}
+      {/* <td className="border-separate border border-slate-300 h-24">{props.post.title}</td> */}
+      <td className="border-separate border border-slate-300 h-24 hover:underline">
+        <a href={`/post/${props.post.id}`} className="hover:underline"> {props.post.title}</a>
+      </td>
       <td className="border-separate border border-slate-300 h-24">{props.post.category}</td>
       <td className="border-separate border border-slate-300 h-24">{props.post.author_name}</td>
       <td className="border-separate border border-slate-300 h-24">{props.post.number_of_comments}</td>
@@ -48,6 +45,12 @@ const AdminEachPost: React.FC<EachPostProps> = (props) => {
             <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
           </svg>
         </button>
+        {/* <Button
+          onClick={() => deletePost(props.post.id)}
+          className="h-8"
+        >
+          delete
+        </Button> */}
         &#160;
         <EditPostModal postData={props.post} setPostData={setPostData} showCategory={showCategory} getPosts={props.getPosts} />
       </td>

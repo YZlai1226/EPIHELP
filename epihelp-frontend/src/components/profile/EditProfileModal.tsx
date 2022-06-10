@@ -3,6 +3,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { useAuth } from './../../hooks/auth'
 import { User } from './../../models/user'
 import Button from './../Button'
+import EditButton from './../EditButton'
 import { changeUserRole, editUser } from './../../services/userService'
 
 /* eslint-disable max-len */
@@ -55,17 +56,23 @@ const EditProfileModal: React.FC<editProfileModalProps> = (props) => {
       }
     }
   }
-  
+
   return (
     <div>
-
-      <Button
-        onClick={() => setOpen(true)}
-        type="button"
-      >
-        Edit
-      </Button>
-
+      {props.showRole === false ?
+        <>
+          <Button
+            onClick={() => setOpen(true)}
+            type="button"
+          >
+            Edit
+          </Button>
+        </>
+        :
+        <>
+          <EditButton setOpen={setOpen} color={'black'} />
+        </>
+      }
       {open === true &&
         <Transition.Root show={open} as={Fragment}>
           <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={() => setOpen(false)}>
@@ -213,25 +220,27 @@ const EditProfileModal: React.FC<editProfileModalProps> = (props) => {
                                   placeholder="Tell us a bit about yourself."
                                 />
                               </div>
-
-                              <label htmlFor="about" className="block text-sm font-medium text-gray-700">
-                                User role
-                              </label>
-                              <div className="mt-1 flex rounded-md shadow-sm">
-                                <select
-                                  name="role"
-                                  id="role"
-                                  value={userData.role}
-                                  onChange={(e) => { setUserData(prevData => ({ ...prevData, role: e.target.value })) }}
-                                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm
+                              {props.showRole === true &&
+                                <>
+                                  <label htmlFor="about" className="block text-sm font-medium text-gray-700">
+                                    User role
+                                  </label>
+                                  <div className="mt-1 flex rounded-md shadow-sm">
+                                    <select
+                                      name="role"
+                                      id="role"
+                                      value={userData.role}
+                                      onChange={(e) => { setUserData(prevData => ({ ...prevData, role: e.target.value })) }}
+                                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm
                                       focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                >
-                                  <option value='admin'>admin</option>
-                                  <option value='moderator'>moderator</option>
-                                  <option value='user'>user</option>
-                                </select>
-                              </div>
-
+                                    >
+                                      <option value='admin'>admin</option>
+                                      <option value='moderator'>moderator</option>
+                                      <option value='user'>user</option>
+                                    </select>
+                                  </div>
+                                </>
+                              }
                               <br />
                               <button
                                 onClick={e => { setOpen?.(false); handleClick(e) }}

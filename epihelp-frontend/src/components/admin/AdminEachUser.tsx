@@ -4,10 +4,12 @@ import { User } from './../../models/user'
 import Button from './../Button'
 import EditProfileModal from './../../components/profile/EditProfileModal'
 
+/* eslint-disable max-len */
+
 type EachUserProps = {
   user: User
   setUserData: React.Dispatch<React.SetStateAction<User | undefined>>
-  getUsers:() => void
+  getUsers: () => void
   // setUserRole: React.Dispatch<React.SetStateAction<string>>
   // setUserId: React.Dispatch<React.SetStateAction<string>>
   // handleSubmit: any
@@ -26,11 +28,19 @@ const AdminEachUser: React.FC<EachUserProps> = (props) => {
       <td className="border-separate border border-slate-300 h-24">{props.user.formation}</td>
       <td className="border-separate border border-slate-300 h-24">{props.user.role}</td>
       <td className="border-separate border border-slate-300 h-24">
-        <Button
+        {/* <Button
           onClick={() => deleteUser(props.user._id)}
         >
           Delete
-        </Button>
+        </Button> */}
+        <button
+          className="block px-2.5 py-2.5 text-center"
+          onClick={() => deleteUser(props.user._id)}
+          type="button" >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+          </svg>
+        </button>
         &#160;
         {/* <Button
       >
@@ -39,47 +49,11 @@ const AdminEachUser: React.FC<EachUserProps> = (props) => {
         <EditProfileModal
           userData={props.user}
           setUserData={props.setUserData}
-          showRole ={showRole}
+          showRole={showRole}
           getUsers={props.getUsers}
         />
       </td>
     </tr>
-    // <tr>
-    //   <td className="border-separate border border-slate-300 h-24">{props.user._id}</td>
-    //   <td className="border-separate border border-slate-300 h-24">{props.user.name}</td>
-    //   <td className="border-separate border border-slate-300 h-24">{props.user.email}</td>
-    //   <td className="border-separate border border-slate-300 h-24">{props.user.year}</td>
-    //   <td className="border-separate border border-slate-300 h-24">{props.user.formation}</td>
-    //   {/* <td className="border-separate border border-slate-300 h-24">{props.user.role}</td> */}
-    //   <td className="border-separate border border-slate-300 h-24">
-    //     <select
-    //       id="role"
-    //       name="role"
-    //       value={props.userRole}
-    //       onChange={(e) => props.setUserRole?.(e.target.value)}
-    //       autoComplete="role"
-    //       className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm
-    //                     focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-    //     >
-    //       <option value='admin'>admin</option>
-    //       <option value='moderator'>moderator</option>
-    //       <option value='user'>user</option>
-    //     </select>
-    //   </td>
-    //   <td className="border-separate border border-slate-300 h-24">
-    //     <button
-    //       onClick={e => { props.handleSubmit(e); props.setUserId(props.user._id) }}
-
-    //       type="submit"
-    //       className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm
-    //                   text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none
-    //                   focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-    //     >
-    //       Post
-    //     </button>
-    //   </td>
-    // </tr>
-
   )
 }
 export default AdminEachUser;
