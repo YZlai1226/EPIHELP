@@ -30,7 +30,7 @@ const Navigation: React.FC<NavigationProps> = ({ user }) => {
                 </h1>
               </Link>
             </div>
-      
+
             <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
 
               <CustomNavLink
@@ -43,6 +43,13 @@ const Navigation: React.FC<NavigationProps> = ({ user }) => {
                   to='/admin'
                 >
                   Admin
+                </CustomNavLink>
+              }
+              {user?.role === 'moderator' &&
+                <CustomNavLink
+                  to='/admin'
+                >
+                  Moderator
                 </CustomNavLink>
               }
             </div>
@@ -127,13 +134,13 @@ const Navigation: React.FC<NavigationProps> = ({ user }) => {
             </ResponsiveNavLink>
           </div>
           {user?.role === 'admin' &&
-          <div className="pt-2 pb-3 space-y-1">
-            <ResponsiveNavLink
-              to="/admin"
-            >
-              Admin
-            </ResponsiveNavLink>
-          </div>
+            <div className="pt-2 pb-3 space-y-1">
+              <ResponsiveNavLink
+                to="/admin"
+              >
+                Admin
+              </ResponsiveNavLink>
+            </div>
           }
           {/* Responsive Settings Options */}
           <div className="pt-4 pb-1 border-t border-gray-200">
