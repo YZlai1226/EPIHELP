@@ -11,7 +11,7 @@ const CustomNavLink: React.FC<NavLinkProps> = ({ children, ...props }) => (
     className={({ isActive }) => (isActive
       ? 'inline-flex items-center px-1 pt-1 border-b-2 ' +
       'text-sm font-medium leading-5 focus:outline-none transition ' +
-      'duration-150 ease-in-out border-blue-900 text-gray-900 focus:border-blue-900'
+      'duration-150 ease-in-out border-blue-900 text-white focus:border-blue-900'
       : 'inline-flex items-center px-1 pt-1 border-b-2 text-sm ' +
       'font-medium leading-5 focus:outline-none transition duration-150 ' +
       'ease-in-out border-transparent text-white hover:text-gray-300 ' +
