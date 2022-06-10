@@ -4,8 +4,8 @@ import AppLayout from './../components/Layouts/AppLayout'
 const LiveChat = () => (
   <AppLayout
     header={
-      <h2 className="font-semibold text-xl text-white leading-tight">
-        Live Chat
+      <h2 className="font-semibold text-3xl text-white align-text-bottom leading-tight">
+      Live Chat
       </h2>
     }>
     <div className="py-12">

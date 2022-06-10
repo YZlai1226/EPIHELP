@@ -44,7 +44,7 @@ const NewPost = () => {
   return (
     <AppLayout
       header={
-        <h2 className="font-semibold text-xl text-white leading-tight">
+        <h2 className="font-semibold text-3xl text-white align-text-bottom leading-tight">
           Create a post
         </h2>
       }>

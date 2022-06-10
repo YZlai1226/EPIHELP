@@ -10,7 +10,7 @@ module.exports = {
         sans: ['Nunito', ...defaultTheme.fontFamily.sans]
       },
       backgroundImage: {
-        'header-image': 'url("./images/header.jpg")'
+        'header-image': 'url("./images/header.png")'
       },
       opacity: ['disabled']
     }

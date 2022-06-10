@@ -63,7 +63,7 @@ const PostForm: React.FC<postFormProps> = (props) => {
                       id="title"
                       value={props.title}
                       onChange={(e) => props.setTitle(e.target.value)}
-                      className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full
+                      className="focus:ring-blue-900 focus:border-blue-900 flex-1 block w-full
                           rounded-md sm:text-sm border-gray-300"
                       placeholder="Enter the title of your question."
                     />
@@ -83,7 +83,7 @@ const PostForm: React.FC<postFormProps> = (props) => {
                   onChange={(e) => props.setCategory?.(e.target.value)}
                   autoComplete="category"
                   className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm
-                      focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      focus:outline-none focus:ring-blue-900 focus:border-blue-900 sm:text-sm"
                 >
                   {categories?.map((category) => (
                     <option key={category.id} value={category.id}>{category.name}</option>
@@ -112,7 +112,7 @@ const PostForm: React.FC<postFormProps> = (props) => {
                   value={props.content}
                   onChange={(e) => props.setContent(e.target.value)}
                   rows={6}
-                  className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block
+                  className="shadow-sm focus:ring-blue-900 focus:border-blue-900 mt-1 block
                         w-full sm:text-sm border border-gray-300 rounded-md"
                   placeholder="Enter the content of your question"
                 />
@@ -128,8 +128,8 @@ const PostForm: React.FC<postFormProps> = (props) => {
 
                 type="submit"
                 className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm
-                    text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none
-                    focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    text-sm font-medium rounded-md text-white bg-blue-900 hover:bg-blue-900 focus:outline-none
+                    focus:ring-2 focus:ring-offset-2 focus:ring-blue-900"
               >
                 Post
               </button>
