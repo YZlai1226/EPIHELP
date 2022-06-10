@@ -170,7 +170,7 @@ const Admin = () => {
                     <>
                       {userFlag &&
                         <>
-                          401 Unauthorised
+                          401 Unauthorized
                         </>
                       }
                       {categoryFlag &&
@@ -200,11 +200,11 @@ const Admin = () => {
                     <>
                       {(user?.role === 'user') ?
                         <>
-                          401 Unauthorised
+                          401 Unauthorized
                         </>
                         :
                         <>
-                          401 Unauthorised
+                          401 Unauthorized
                         </>
                       }
                     </>

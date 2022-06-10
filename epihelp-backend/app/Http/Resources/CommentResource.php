@@ -14,13 +14,19 @@ class CommentResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
+        $comment = [
             'id' => $this->id,
-            'author_id' => $this->user->id,
-            'author_name' => $this->user->name,
             'content' => $this->content,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
         ];
+        if ($this->user) {
+            $comment['author_id'] = $this->user->id;
+            $comment['author_name'] = $this->user->name;
+        } else {
+            $comment['author_id'] = 'undefined';
+            $comment['author_name'] = 'undefined';
+        }
+        return $comment;
     }
 }
