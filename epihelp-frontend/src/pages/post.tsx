@@ -50,7 +50,7 @@ const PostPage = () => {
     <AppLayout
       header={
         <div className="flex justify-between">
-          <h2 className="font-semibold text-xl text-gray-800 leading-tight">
+          <h2 className="font-semibold text-xl text-white leading-tight">
             <a href={`/category/${postData?.category_id}`}>{postData?.category}</a> / {postData?.title}
           </h2>
           {user?._id === postData?.author_id && postData &&

@@ -11,8 +11,8 @@ function Home() {
       <div className="hidden fixed top-0 right-0 px-6 py-4 sm:block">
         {user ?
           <NavLink
-            to="/main"
-            className="ml-4 text-sm text-gray-700 underline"
+            to="/categories"
+            className="ml-4 text-sm text-blue-900 underline"
           >
             Main Page
           </NavLink>
@@ -20,13 +20,13 @@ function Home() {
           <>
             <NavLink
               to="/login"
-              className="ml-4 text-sm text-blue underline"
+              className="ml-4 text-sm text-blue-900 underline"
             >
               Login
             </NavLink>
             <NavLink
               to="/register"
-              className="ml-4 text-sm text-blue underline"
+              className="ml-4 text-sm text-blue-900 underline"
             >
               Register
             </NavLink>
@@ -38,16 +38,6 @@ function Home() {
           <img src="https://svgshare.com/i/ht1.svg" />
         </div>
 
-{/*uncomment this to see the difference*/}    
-  
-   {/*         <div className="flex sm:justify-center mt-8 bg-grey text-2xl p-12">
-          <span style={{
-            color: 'darknavy',
-            fontWeight: 'lighter',
-            fontFamily: 'monospace'
-          }}>
-            Epihelp, the best place to find help !</span>
-        </div> */}
       </div>
     </div>
   );
