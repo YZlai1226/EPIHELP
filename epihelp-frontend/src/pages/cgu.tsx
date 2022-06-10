@@ -1,14 +1,8 @@
 import EachsLayout from './../components/Layouts/EachsLayout'
-import AppLayout from './../components/Layouts/AppLayout'
+import GuestLayout from './../components/Layouts/GuestLayout'
 
 const Cgu = () => (
-  <AppLayout
-    header={
-      <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-        Terms and Condition
-      </h2>
-    }>
-
+  <GuestLayout >
     <div className="py-12">
       <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div className="bg-white shadow-sm sm:rounded-lg">
@@ -88,7 +82,7 @@ const Cgu = () => (
         </div>
       </div>
     </div>
-  </AppLayout >
+  </GuestLayout >
 )
 
 export default Cgu
