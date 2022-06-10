@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { useAuth } from './../../hooks/auth'
 import { Category } from './../../models/category'
-import Button from './../Button'
+import EditButton from './../EditButton'
 import { editCategory } from './../../services/categoryService'
 
 /* eslint-disable max-len */
@@ -39,12 +39,7 @@ const EditCategoryModal: React.FC<editCateogryModalProps> = (props) => {
   return (
     <div>
 
-      <Button
-        onClick={() => setOpen(true)}
-        type="button"
-      >
-        Edit
-      </Button>
+      <EditButton setOpen={setOpen} color={'black'} />
 
       {open === true &&
         <Transition.Root show={open} as={Fragment}>
