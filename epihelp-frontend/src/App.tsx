@@ -17,6 +17,7 @@ import NewPost from './pages/newpost';
 import Legal from './pages/legal';
 import Cgu from './pages/cgu';
 import SearchResults from './pages/searchresults';
+import CGU from './pages/cgu';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path="/admin" element={<Admin />} />
         <Route path="/livechat" element={<LiveChat />} />
         <Route path="/searchresults" element={<SearchResults />} />
+        <Route path="/cgu" element={<CGU />} />
         <Route path="*" element={<NotFoundPage />}
         />
       </Routes>

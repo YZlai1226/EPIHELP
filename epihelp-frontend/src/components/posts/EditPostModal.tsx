@@ -12,6 +12,7 @@ type editPostModalProps = {
   postData: Post | PostSummary,
   setPostData: React.Dispatch<React.SetStateAction<Post | PostSummary | undefined>>,
   showCategory: boolean
+  getPosts?: () => void
   // getPostData: (id: string) => Promise<void>
 }
 
@@ -29,7 +30,10 @@ const EditPostModal: React.FC<editPostModalProps> = (props) => {
     e.preventDefault()
     setOpen(false);
     const res: any = await editPost(props.postData.id, title, content, category)
-    props.setPostData(res.data.data)
+    props.setPostData({...res.data.data})
+    if (props.showCategory === true && props.getPosts) {
+      props.getPosts()
+    }
   }
 
   return (

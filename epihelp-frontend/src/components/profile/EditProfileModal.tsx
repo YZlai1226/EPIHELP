@@ -3,13 +3,15 @@ import { Dialog, Transition } from '@headlessui/react'
 import { useAuth } from './../../hooks/auth'
 import { User } from './../../models/user'
 import Button from './../Button'
-import { editUser } from './../../services/userService'
+import { changeUserRole, editUser } from './../../services/userService'
 
 /* eslint-disable max-len */
 
 type editProfileModalProps = {
   userData: User,
   setUserData: React.Dispatch<React.SetStateAction<User | undefined>>,
+  showRole: boolean
+  getUsers?: () => void
 }
 
 const EditProfileModal: React.FC<editProfileModalProps> = (props) => {
@@ -24,18 +26,36 @@ const EditProfileModal: React.FC<editProfileModalProps> = (props) => {
       data: User | undefined
     };
     e.preventDefault();
-    const res: any = await editUser(
-      props.userData._id,
-      user._id,
-      userData.name,
-      userData.formation,
-      userData.city,
-      userData.year,
-      userData.bio
-    );
-    props.setUserData(res.data);
+    if (props.showRole === false) {
+      const res: any = await editUser(
+        props.userData._id,
+        user._id,
+        userData.name,
+        userData.formation,
+        userData.city,
+        userData.year,
+        userData.bio
+      );
+      props.setUserData(res.data);
+    }
+    else {
+      if (props.getUsers) {
+        const res: any = await changeUserRole(
+          props.userData._id,
+          user._id,
+          userData.role,
+          userData.name,
+          userData.formation,
+          userData.city,
+          userData.year,
+          userData.bio
+        );
+        props.setUserData(res.data);
+        props.getUsers()
+      }
+    }
   }
-
+  
   return (
     <div>
 
@@ -192,6 +212,24 @@ const EditProfileModal: React.FC<editProfileModalProps> = (props) => {
                         w-full sm:text-sm border border-gray-300 rounded-md"
                                   placeholder="Tell us a bit about yourself."
                                 />
+                              </div>
+
+                              <label htmlFor="about" className="block text-sm font-medium text-gray-700">
+                                User role
+                              </label>
+                              <div className="mt-1 flex rounded-md shadow-sm">
+                                <select
+                                  name="role"
+                                  id="role"
+                                  value={userData.role}
+                                  onChange={(e) => { setUserData(prevData => ({ ...prevData, role: e.target.value })) }}
+                                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm
+                                      focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                >
+                                  <option value='admin'>admin</option>
+                                  <option value='moderator'>moderator</option>
+                                  <option value='user'>user</option>
+                                </select>
                               </div>
 
                               <br />

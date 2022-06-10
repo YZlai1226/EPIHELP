@@ -4,13 +4,14 @@ import { DropdownButton } from './../DropdownLink'
 import { useAuth } from './../../hooks/auth'
 import { useState } from 'react'
 import CustomNavLink from './../NavLink';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { User } from './../../models/user';
 
 interface NavigationProps {
   user: User
 }
 const Navigation: React.FC<NavigationProps> = ({ user }) => {
+  const navigate = useNavigate();
   const { logout } = useAuth()
   const [open, setOpen] = useState(false)
 
@@ -33,20 +34,17 @@ const Navigation: React.FC<NavigationProps> = ({ user }) => {
             <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
 
               <CustomNavLink
-                to='/profile'
-              >
-                Profile
-              </CustomNavLink>
-              <CustomNavLink
-                to='/admin'
-              >
-                Admin
-              </CustomNavLink>
-              <CustomNavLink
                 to='/livechat'
               >
                 Live Chat
               </CustomNavLink>
+              {user?.role === 'admin' &&
+                <CustomNavLink
+                  to='/admin'
+                >
+                  Admin
+                </CustomNavLink>
+              }
             </div>
           </div>
           {/* Settings Dropdown */}
@@ -56,8 +54,8 @@ const Navigation: React.FC<NavigationProps> = ({ user }) => {
               width={48}
               trigger={
                 <button className="flex items-center text-sm font-medium
-                 text-gray-500 hover:text-gray-700 focus:outline-none
-                 transition duration-150 ease-in-out">
+                text-gray-500 hover:text-gray-700 focus:outline-none
+                transition duration-150 ease-in-out">
                   <div>{user?.name}</div>
                   <div className="ml-1">
                     <svg
@@ -75,6 +73,9 @@ const Navigation: React.FC<NavigationProps> = ({ user }) => {
                 </button>
               }>
               {/* Authentication */}
+              <DropdownButton onClick={() => navigate('/profile')}>
+                Profile
+              </DropdownButton>
               <DropdownButton onClick={logout}>
                 Logout
               </DropdownButton>
@@ -120,18 +121,20 @@ const Navigation: React.FC<NavigationProps> = ({ user }) => {
         <div className="block sm:hidden">
           <div className="pt-2 pb-3 space-y-1">
             <ResponsiveNavLink
-              to="/main"
+              to="/livechat"
             >
-              Dashboard
+              Live Chat
             </ResponsiveNavLink>
           </div>
+          {user?.role === 'admin' &&
           <div className="pt-2 pb-3 space-y-1">
             <ResponsiveNavLink
-              to="/profile"
+              to="/admin"
             >
-              Profile
+              Admin
             </ResponsiveNavLink>
           </div>
+          }
           {/* Responsive Settings Options */}
           <div className="pt-4 pb-1 border-t border-gray-200">
             <div className="flex items-center px-4">
@@ -161,6 +164,9 @@ const Navigation: React.FC<NavigationProps> = ({ user }) => {
             </div>
             <div className="mt-3 space-y-1">
               {/* Authentication */}
+              <ResponsiveNavButton onClick={() => navigate('/profile')}>
+                Profile
+              </ResponsiveNavButton>
               <ResponsiveNavButton onClick={logout}>
                 Logout
               </ResponsiveNavButton>

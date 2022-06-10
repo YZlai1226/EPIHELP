@@ -7,7 +7,9 @@ import { User } from './../models/user'
 import AdminCategoryManager from './../components/admin/AdminCategoryManager'
 import AdminUserManager from './../components/admin/AdminUserManager'
 import AdminPostManager from './../components/admin/AdminPostManager'
-import { Post, PostSummary } from './../models/post'
+import { PostSummary } from './../models/post'
+import { changeUserRole } from './../services/userService'
+import { useAuth } from './../hooks/auth'
 
 const Admin = () => {
   const [categories, setCategories] = useState<Category[]>([])
@@ -16,6 +18,9 @@ const Admin = () => {
   const [categoryFlag, setCategoryFlag] = useState<boolean>(false)
   const [userFlag, setUserFlag] = useState<boolean>(false)
   const [postFlag, setPostFlag] = useState<boolean>(false)
+  const [userData, setUserData] = useState<User>()
+  const [showRole, setShowRole] = useState<boolean>(false)
+  const { user } = useAuth();
 
   type CategoryResponse = {
     data: Category[]
@@ -123,31 +128,85 @@ const Admin = () => {
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div className="bg-white shadow-sm sm:rounded-lg">
             <div className="p-6 bg-white border-b border-gray-200">
-              {categoryFlag &&
+              {(user?.role === 'admin') ?
                 <>
-                  <div className="flex justify-center font-bold text-2xl">
-                    <h1>Categories</h1>
-                  </div>
-                  <br />
-                  <AdminCategoryManager categories={categories}></AdminCategoryManager>
+                  {categoryFlag &&
+                    <>
+                      <div className="flex justify-center font-bold text-2xl">
+                        <h1>Categories</h1>
+                      </div>
+                      <br />
+                      <AdminCategoryManager categories={categories}></AdminCategoryManager>
+                    </>
+                  }
+                  {userFlag &&
+                    <>
+                      <div className="flex justify-center font-bold text-2xl">
+                        <h1>Users</h1>
+                      </div>
+                      <br />
+                      <AdminUserManager users={users} setUserData={setUserData} getUsers={getUsers}></AdminUserManager>
+                    </>
+                  }
+                  {postFlag &&
+                    <>
+                      <div className="flex justify-center font-bold text-2xl">
+                        <h1>Posts</h1>
+                      </div>
+                      <br />
+                      <AdminPostManager
+                        posts={posts}
+                        getPosts={getPosts}
+                        getCategories={getCategories}
+                      ></AdminPostManager>
+                    </>
+                  }
                 </>
-              }
-              {userFlag &&
+                :
                 <>
-                  <div className="flex justify-center font-bold text-2xl">
-                    <h1>Users</h1>
-                  </div>
-                  <br />
-                  <AdminUserManager users={users}></AdminUserManager>
-                </>
-              }
-              {postFlag &&
-                <>
-                  <div className="flex justify-center font-bold text-2xl">
-                    <h1>Posts</h1>
-                  </div>
-                  <br />
-                  <AdminPostManager posts={posts} getPosts={getPosts} getCategories={getCategories}></AdminPostManager>
+                  {(user?.role === 'moderator') ?
+                    <>
+                      {userFlag &&
+                        <>
+                          401 Unauthorised
+                        </>
+                      }
+                      {categoryFlag &&
+                        <>
+                          <div className="flex justify-center font-bold text-2xl">
+                            <h1>Categories</h1>
+                          </div>
+                          <br />
+                          <AdminCategoryManager categories={categories}></AdminCategoryManager>
+                        </>
+                      }
+                      {postFlag &&
+                        <>
+                          <div className="flex justify-center font-bold text-2xl">
+                            <h1>Posts</h1>
+                          </div>
+                          <br />
+                          <AdminPostManager
+                            posts={posts}
+                            getPosts={getPosts}
+                            getCategories={getCategories}
+                          ></AdminPostManager>
+                        </>
+                      }
+                    </>
+                    :
+                    <>
+                      {(user?.role === 'user') ?
+                        <>
+                          401 Unauthorised
+                        </>
+                        :
+                        <>
+                          401 Unauthorised
+                        </>
+                      }
+                    </>
+                  }
                 </>
               }
             </div>

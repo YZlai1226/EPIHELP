@@ -21,10 +21,11 @@ const AdminEachPost: React.FC<EachPostProps> = (props) => {
     setShowCategory(true)
   }, [])
 
-  useEffect(() => {
-    props.getPosts()
-    console.log('123456789')
-  }, [postData])
+  // useEffect(() => {
+  //   props.getPosts()
+  //   console.log('123456789')
+  // }, [postData])
+  // console.log('*****', postData)
 
   return (
     <tr>
@@ -43,7 +44,7 @@ const AdminEachPost: React.FC<EachPostProps> = (props) => {
           </svg>
         </button>
         &#160;
-        <EditPostModal postData={props.post} setPostData={setPostData} showCategory={showCategory}  />
+        <EditPostModal postData={props.post} setPostData={setPostData} showCategory={showCategory} getPosts={props.getPosts} />
       </td>
     </tr>
 

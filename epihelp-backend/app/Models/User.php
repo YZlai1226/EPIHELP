@@ -29,7 +29,8 @@ class User extends Authenticatable
         'formation',
         'city',
         'year',
-        'bio'
+        'bio',
+        'role'
     ];
 
     /**
