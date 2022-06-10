@@ -49,8 +49,6 @@ const Categories = () => {
           </div>
         </div>
       </div>
-      <br />
-      <Footer />
     </AppLayout>
   )
 }

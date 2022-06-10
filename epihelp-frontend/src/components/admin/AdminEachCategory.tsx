@@ -2,10 +2,12 @@ import React from 'react';
 import { Category } from './../../models/category';
 import { Link } from 'react-router-dom';
 import Button from './../Button'
-import { deleteCategory, editCategory } from './../../services/categoryService'
+import { deleteCategory } from './../../services/categoryService'
+import EditCategoryModal from './../../components/Category/EditCategoryModal'
 
 type EachCategoryProps = {
-  category: Category
+  category: Category,
+  getCategories:() => void
 }
 
 const AdminEachCategory: React.FC<EachCategoryProps> = (props) => (
@@ -20,11 +22,15 @@ const AdminEachCategory: React.FC<EachCategoryProps> = (props) => (
         delete
       </Button>
       &#160;
-      <Button
+      {/* <Button
         onClick={() => editCategory(props.category.id, props.category.name, props.category.description)}
       >
         Edit
-      </Button>
+      </Button> */}
+      <EditCategoryModal
+        category={props.category}
+        getCategories={props.getCategories}
+      />
     </td>
   </tr>
 

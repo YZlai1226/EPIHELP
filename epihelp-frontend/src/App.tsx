@@ -17,6 +17,7 @@ import NewPost from './pages/newpost';
 import Legal from './pages/legal';
 import SearchResults from './pages/searchresults';
 import CGU from './pages/cgu';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route path="*" element={<NotFoundPage />}
         />
       </Routes>
+      <Footer/>
     </div>
   );
 }

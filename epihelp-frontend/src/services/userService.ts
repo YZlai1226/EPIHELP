@@ -29,7 +29,7 @@ export async function editUser(
     const res: UserResponse = await myAxios.put(`/users/${_id}`, {
       _id: _id,
       loggedUserId: loggedUserId,
-      username: username,
+      name: username,
       formation: formation,
       city: city,
       year: year,
@@ -59,7 +59,7 @@ export async function changeUserRole(
       _id: _id,
       loggedUserId: loggedUserId,
       role: role,
-      username: username,
+      name: username,
       formation: formation,
       city: city,
       year: year,
