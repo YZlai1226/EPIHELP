@@ -31,7 +31,6 @@ const PostForm: React.FC<postFormProps> = (props) => {
       };
       axios.get<CategoryResponse>('/categories')
         .then((response) => {
-          console.log('here here in post form')
           setCategories(response.data.data)
         }
         )
@@ -43,7 +42,7 @@ const PostForm: React.FC<postFormProps> = (props) => {
         <div className="px-4 sm:px-0">
           <h3 className="text-lg font-medium leading-6 text-gray-900">{props.formTitle}</h3>
           <p className="mt-1 text-sm text-gray-600">
-            Before you post, be sure to check the <a href='/'>forums</a> to see if someone already answered it.
+            Before you post, be sure to check the <a style={{color: 'blue'}} href='/main'>forums</a> to see if someone already answered it.
           </p>
         </div>
       </div>

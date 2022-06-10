@@ -27,8 +27,8 @@ const Main = () => {
   return (
     <AppLayout
       header={
-        <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-          Categories
+        <h2 className="font-semibold text-4xl text-white align-text-bottom leading-tight">
+          Home Page
         </h2>
       }
     >

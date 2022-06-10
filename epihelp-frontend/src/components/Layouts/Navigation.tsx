@@ -6,6 +6,7 @@ import { useState } from 'react'
 import CustomNavLink from './../NavLink';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { User } from './../../models/user';
+import logoWhite from './../../images/logo-white.png';
 
 interface NavigationProps {
   user: User
@@ -16,7 +17,7 @@ const Navigation: React.FC<NavigationProps> = ({ user }) => {
   const [open, setOpen] = useState(false)
 
   return (
-    <nav className="bg-white border-b border-gray-100 shadow">
+    <nav className="bg-blue-900 shadow z-40 ">
       {/* Primary Navigation Menu */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
@@ -25,9 +26,7 @@ const Navigation: React.FC<NavigationProps> = ({ user }) => {
             <div className="flex-shrink-0 flex items-center">
               <Link to="/main">
                 {/* <ApplicationLogo className="block h-10 w-auto fill-current text-gray-600" /> */}
-                <h1>
-                  Epihelp
-                </h1>
+                <img src={logoWhite} width='150' alt="logo" />
               </Link>
             </div>
 
@@ -61,8 +60,8 @@ const Navigation: React.FC<NavigationProps> = ({ user }) => {
               width={48}
               trigger={
                 <button className="flex items-center text-sm font-medium
-                text-gray-500 hover:text-gray-700 focus:outline-none
-                transition duration-150 ease-in-out">
+                 text-white hover:text-gray-400 focus:outline-none
+                 transition duration-150 ease-in-out">
                   <div>{user?.name}</div>
                   <div className="ml-1">
                     <svg
@@ -93,7 +92,7 @@ const Navigation: React.FC<NavigationProps> = ({ user }) => {
             <button
               onClick={() => setOpen(open => !open)}
               className="inline-flex items-center justify-center p-2
-              rounded-md text-gray-400 hover:text-gray-500
+              rounded-md text-white hover:text-gray-400
               hover:bg-gray-100 focus:outline-none focus:bg-gray-100
                focus:text-gray-500 transition duration-150 ease-in-out">
               <svg
@@ -147,7 +146,7 @@ const Navigation: React.FC<NavigationProps> = ({ user }) => {
             <div className="flex items-center px-4">
               <div className="flex-shrink-0">
                 <svg
-                  className="h-10 w-10 fill-current text-gray-400"
+                  className="h-10 w-10 fill-current text-white"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -161,10 +160,10 @@ const Navigation: React.FC<NavigationProps> = ({ user }) => {
                 </svg>
               </div>
               <div className="ml-3">
-                <div className="font-medium text-base text-gray-800">
+                <div className="font-medium text-base text-white">
                   {user?.name}
                 </div>
-                <div className="font-medium text-sm text-gray-500">
+                <div className="font-medium text-sm text-gray-400">
                   {user?.email}
                 </div>
               </div>

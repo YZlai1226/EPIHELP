@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useAuth } from './../hooks/auth';
 
 function Home() {
-  const { user } = useAuth({ middleware: 'guest', redirectIfAuthenticated: undefined })
+  const { user } = useAuth({ middleware: 'guest', redirectIfAuthenticated: '/main' })
 
   return (
     <div className="relative flex items-top justify-center
@@ -12,7 +12,7 @@ function Home() {
         {user ?
           <NavLink
             to="/main"
-            className="ml-4 text-sm text-gray-700 underline"
+            className="ml-4 text-sm text-blue-900 underline"
           >
             Main Page
           </NavLink>
@@ -20,13 +20,13 @@ function Home() {
           <>
             <NavLink
               to="/login"
-              className="ml-4 text-sm text-blue underline"
+              className="ml-4 text-sm text-blue-900 underline"
             >
               Login
             </NavLink>
             <NavLink
               to="/register"
-              className="ml-4 text-sm text-blue underline"
+              className="ml-4 text-sm text-blue-900 underline"
             >
               Register
             </NavLink>
@@ -38,16 +38,6 @@ function Home() {
           <img src="https://svgshare.com/i/ht1.svg" />
         </div>
 
-{/*uncomment this to see the difference*/}    
-  
-   {/*         <div className="flex sm:justify-center mt-8 bg-grey text-2xl p-12">
-          <span style={{
-            color: 'darknavy',
-            fontWeight: 'lighter',
-            fontFamily: 'monospace'
-          }}>
-            Epihelp, the best place to find help !</span>
-        </div> */}
       </div>
     </div>
   );
