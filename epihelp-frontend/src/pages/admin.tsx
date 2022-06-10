@@ -45,7 +45,7 @@ const Admin = () => {
   }, []);
 
   function getCategories() {
-    axios.get<CategoryResponse>('/main')
+    axios.get<CategoryResponse>('/categories')
       .then((response) => {
         setCategories(response.data.data)
         window.localStorage.setItem('categories', 'true');

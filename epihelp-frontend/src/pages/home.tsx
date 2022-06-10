@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useAuth } from './../hooks/auth';
 
 function Home() {
-  const { user } = useAuth({ middleware: 'guest', redirectIfAuthenticated: undefined })
+  const { user } = useAuth({ middleware: 'guest', redirectIfAuthenticated: '/main' })
 
   return (
     <div className="relative flex items-top justify-center
@@ -11,7 +11,7 @@ function Home() {
       <div className="hidden fixed top-0 right-0 px-6 py-4 sm:block">
         {user ?
           <NavLink
-            to="/categories"
+            to="/main"
             className="ml-4 text-sm text-blue-900 underline"
           >
             Main Page
