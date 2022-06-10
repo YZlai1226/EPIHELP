@@ -36,7 +36,7 @@ const AdminEachPost: React.FC<EachPostProps> = (props) => {
       <td className="border-separate border border-slate-300 h-24">{props.post.category}</td>
       <td className="border-separate border border-slate-300 h-24">{props.post.author_name}</td>
       <td className="border-separate border border-slate-300 h-24">{props.post.number_of_comments}</td>
-      <td className="border-separate border border-slate-300 h-24 flex justify-center">
+      <td className="border-separate border border-slate-300 h-24">
         <div className="flex justify-center">
           <button
             className="block px-2.5 py-0.5 text-center"
