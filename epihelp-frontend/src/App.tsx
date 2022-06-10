@@ -44,7 +44,8 @@ function App() {
             />
           </Routes>
         </BrowserRouter>
-      </React.StrictMode>,
+      </React.StrictMode>
+      <Footer />
     </div>
   );
 }
