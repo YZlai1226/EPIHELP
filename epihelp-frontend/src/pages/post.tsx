@@ -49,14 +49,9 @@ const PostPage = () => {
   return (
     <AppLayout
       header={
-        <div className="flex justify-between">
-          <h2 className="font-semibold text-xl text-white leading-tight">
-            <a href={`/category/${postData?.category_id}`}>{postData?.category}</a> / {postData?.title}
-          </h2>
-          {user?._id === postData?.author_id && postData &&
-            <EditPostModal postData={postData} setPostData={setPostData} showCategory={showCategory}/>
-          }
-        </div>
+        <h2 className="font-semibold text-3xl text-white object-bottom leading-tight">
+          <a href={`/category/${postData?.category_id}`}>{postData?.category}</a> / {postData?.title}
+        </h2>
       }>
 
       <div className="py-12">
@@ -73,6 +68,9 @@ const PostPage = () => {
               <span>
                 last edition: {`${postData?.updated_at.substring(0, 10)} `} {postData?.updated_at.substring(11, 16)}
               </span>
+              {user?._id === postData?.author_id && postData &&
+                <EditPostModal postData={postData} setPostData={setPostData} showCategory={showCategory} />
+              }
             </div>
           </div>
         </div>
@@ -80,7 +78,7 @@ const PostPage = () => {
       {postData?.comments &&
         <CommentsManager managerName={managerName} Comments={postData?.comments} />
       }
-      <CommentForm content={content} handleSubmit={handleSubmit} setContent={setContent}/>
+      <CommentForm content={content} handleSubmit={handleSubmit} setContent={setContent} />
 
     </AppLayout>
   )

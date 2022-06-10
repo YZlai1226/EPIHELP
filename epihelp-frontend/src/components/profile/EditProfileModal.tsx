@@ -57,7 +57,7 @@ const EditProfileModal: React.FC<editProfileModalProps> = (props) => {
   }
   
   return (
-    <div>
+    <div >
 
       <Button
         onClick={() => setOpen(true)}
@@ -113,7 +113,7 @@ const EditProfileModal: React.FC<editProfileModalProps> = (props) => {
                                   id="username"
                                   value={userData.name}
                                   onChange={(e) => { setUserData(prevData => ({ ...prevData, name: e.target.value })) }}
-                                  className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
+                                  className="focus:ring-blue-900 focus:border-blue-900 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
                                 />
                               </div>
 
@@ -129,7 +129,7 @@ const EditProfileModal: React.FC<editProfileModalProps> = (props) => {
                                   onChange={(e) => { setUserData(prevData => ({ ...prevData, formation: e.target.value })) }}
                                   autoComplete="formation"
                                   className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm
-                                      focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                      focus:outline-none focus:ring-blue-900 focus:border-blue-900 sm:text-sm"
                                 >
                                   <option value='Programme Grande Ecole'>Programme Grande Ecole</option>
                                   <option value='MSC Pro'>MSC Pro</option>
@@ -151,7 +151,7 @@ const EditProfileModal: React.FC<editProfileModalProps> = (props) => {
                                   value={userData.city}
                                   onChange={(e) => { setUserData(prevData => ({ ...prevData, city: e.target.value })) }}
                                   className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm
-                                      focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                      focus:outline-none focus:ring-blue-900 focus:border-blue-900 sm:text-sm"
                                 >
                                   <option>Bordeaux</option>
                                   <option>Le Kremlin-Bicêtre</option>
@@ -187,7 +187,7 @@ const EditProfileModal: React.FC<editProfileModalProps> = (props) => {
                                   value={userData.year}
                                   onChange={(e) => { setUserData(prevData => ({ ...prevData, year: e.target.value })) }}
                                   className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm
-                                      focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                      focus:outline-none focus:ring-blue-900 focus:border-blue-900 sm:text-sm"
                                 >
                                   <option value='1'>1</option>
                                   <option value='2'>2</option>
@@ -208,7 +208,7 @@ const EditProfileModal: React.FC<editProfileModalProps> = (props) => {
                                   value={userData.bio}
                                   onChange={(e) => { setUserData(prevData => ({ ...prevData, bio: e.target.value })) }}
                                   rows={6}
-                                  className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block
+                                  className="shadow-sm focus:ring-blue-900 focus:border-blue-900 mt-1 block
                         w-full sm:text-sm border border-gray-300 rounded-md"
                                   placeholder="Tell us a bit about yourself."
                                 />
@@ -224,7 +224,7 @@ const EditProfileModal: React.FC<editProfileModalProps> = (props) => {
                                   value={userData.role}
                                   onChange={(e) => { setUserData(prevData => ({ ...prevData, role: e.target.value })) }}
                                   className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm
-                                      focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                      focus:outline-none focus:ring-blue-900 focus:border-blue-900 sm:text-sm"
                                 >
                                   <option value='admin'>admin</option>
                                   <option value='moderator'>moderator</option>
@@ -237,8 +237,8 @@ const EditProfileModal: React.FC<editProfileModalProps> = (props) => {
                                 onClick={e => { setOpen?.(false); handleClick(e) }}
                                 type="submit"
                                 className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm
-                    text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none
-                    focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    text-sm font-medium rounded-md text-white bg-blue-900 hover:bg-blue-900 focus:outline-none
+                    focus:ring-2 focus:ring-offset-2 focus:ring-blue-900"
                               >
                                 Save
                               </button>

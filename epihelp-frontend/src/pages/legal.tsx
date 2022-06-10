@@ -4,8 +4,8 @@ import AppLayout from './../components/Layouts/AppLayout'
 const Legal = () => (
   <AppLayout
     header={
-      <h2 className="font-semibold text-xl text-white leading-tight">
-        Terms and Condition
+      <h2 className="font-semibold text-3xl text-white align-text-bottom leading-tight">
+      Terms and Condition
       </h2>
     }>
     <div className="py-12">
