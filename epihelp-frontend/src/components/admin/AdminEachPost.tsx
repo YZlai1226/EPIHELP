@@ -3,6 +3,7 @@ import Button from './../Button';
 import { Post, PostSummary } from './../../models/post'
 import { deletePost } from './../../services/postsService'
 import EditPostModal from './../../components/posts/EditPostModal'
+import { Link } from 'react-router-dom';
 
 /* eslint-disable max-len */
 
@@ -30,13 +31,17 @@ const AdminEachPost: React.FC<EachPostProps> = (props) => {
   return (
     <tr>
       <td className="border-separate border border-slate-300 h-24">{props.post.id}</td>
+      {/* <Link to={`/post/${props.post.title}`}> */}
       <td className="border-separate border border-slate-300 h-24">{props.post.title}</td>
+      {/* <td className="border-separate border border-slate-300 h-24 hover:underline w-1/6">
+        <a href="/legal" className="hover:underline"> {props.post.title}</a>
+      </td> */}
       <td className="border-separate border border-slate-300 h-24">{props.post.category}</td>
       <td className="border-separate border border-slate-300 h-24">{props.post.author_name}</td>
       <td className="border-separate border border-slate-300 h-24">{props.post.number_of_comments}</td>
       <td className="border-separate border border-slate-300 h-24 flex justify-center">
         <button
-          className="block px-2.5 py-2.5 text-center dark:hover:bg-gray-300"
+          className="block px-2.5 py-2.5 text-center"
           onClick={() => deletePost(props.post.id)}
           type="button" >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

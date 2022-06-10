@@ -53,10 +53,10 @@ const Legal = () => (
             <p>La personne, physique ou morale, qui édite les services de communication au public en ligne.</p>
             <br />
             <p>Epitech agit en tant que responsable du traitement de données personnelles
-               confiées par l'Utilisateur de la Plateforme. L'Utilisateur peut exercer ses droits à tout moment.</p>
+              confiées par l'Utilisateur de la Plateforme. L'Utilisateur peut exercer ses droits à tout moment.</p>
             <br />
             <p>Le développement et l'hébergement de la Plateforme sont assurés
-               par la Direction des systèmes d'information.</p>
+              par la Direction des systèmes d'information.</p>
           </div>
         </div>
       </div>

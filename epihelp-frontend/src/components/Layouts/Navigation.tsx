@@ -24,11 +24,12 @@ const Navigation: React.FC<NavigationProps> = ({ user }) => {
           <div className="flex">
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
-              <Link to="/categories">
+              <Link to="/main">
                 {/* <ApplicationLogo className="block h-10 w-auto fill-current text-gray-600" /> */}
                 <img src={logoWhite} width='150' alt="logo" />
               </Link>
             </div>
+      
             <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
 
               <CustomNavLink

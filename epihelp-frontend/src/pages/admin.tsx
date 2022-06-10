@@ -11,6 +11,8 @@ import { PostSummary } from './../models/post'
 import { changeUserRole } from './../services/userService'
 import { useAuth } from './../hooks/auth'
 
+/* eslint-disable max-len */
+
 const Admin = () => {
   const [categories, setCategories] = useState<Category[]>([])
   const [users, setUsers] = useState<User[]>([])
@@ -43,7 +45,7 @@ const Admin = () => {
   }, []);
 
   function getCategories() {
-    axios.get<CategoryResponse>('/categories')
+    axios.get<CategoryResponse>('/main')
       .then((response) => {
         setCategories(response.data.data)
         window.localStorage.setItem('categories', 'true');
@@ -136,7 +138,7 @@ const Admin = () => {
                         <h1>Categories</h1>
                       </div>
                       <br />
-                      <AdminCategoryManager categories={categories}></AdminCategoryManager>
+                      <AdminCategoryManager categories={categories} getCategories={getCategories}></AdminCategoryManager>
                     </>
                   }
                   {userFlag &&
@@ -177,7 +179,7 @@ const Admin = () => {
                             <h1>Categories</h1>
                           </div>
                           <br />
-                          <AdminCategoryManager categories={categories}></AdminCategoryManager>
+                          <AdminCategoryManager categories={categories} getCategories={getCategories}></AdminCategoryManager>
                         </>
                       }
                       {postFlag &&

@@ -22,6 +22,7 @@ export async function editCategory(
 ) {
   try {
     const res = await myAxios.put<categoryResponse>(`/categories/${id}`, {
+      id: id,
       name: name,
       description: description
     });

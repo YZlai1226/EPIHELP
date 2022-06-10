@@ -14,7 +14,7 @@ function Home() {
             to="/categories"
             className="ml-4 text-sm text-blue-900 underline"
           >
-            Categories
+            Main Page
           </NavLink>
           :
           <>
@@ -38,16 +38,6 @@ function Home() {
           <img src="https://svgshare.com/i/ht1.svg" />
         </div>
 
-{/*uncomment this to see the difference*/}    
-  
-   {/*         <div className="flex sm:justify-center mt-8 bg-grey text-2xl p-12">
-          <span style={{
-            color: 'darknavy',
-            fontWeight: 'lighter',
-            fontFamily: 'monospace'
-          }}>
-            Epihelp, the best place to find help !</span>
-        </div> */}
       </div>
     </div>
   );

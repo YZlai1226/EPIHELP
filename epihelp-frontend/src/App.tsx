@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Categories from './pages/categories';
+import Main from './pages/main';
 import Category from './pages/category';
 import Post from './pages/post';
 import Profile from './pages/profile';
@@ -17,6 +17,7 @@ import Legal from './pages/legal';
 import SearchResults from './pages/searchresults';
 import CGU from './pages/cgu';
 import { BrowserRouter } from 'react-router-dom';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/password-reset/:token" element={<PasswordReset />} />
-            <Route path="/categories" element={<Categories />} />
+            <Route path="/main" element={<Main />} />
             <Route path="/legal" element={<Legal />} />
             <Route path="/category/:idURL" element={<Category />} />
             <Route path="/post/:post" element={<Post />} />

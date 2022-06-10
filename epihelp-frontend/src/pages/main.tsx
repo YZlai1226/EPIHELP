@@ -7,7 +7,7 @@ import Footer from './../components/Footer'
 import SearchBar from './../components/search/SearchBar';
 
 // const Categories: React.FC<CategoryProps> = () => {
-const Categories = () => {
+const Main = () => {
   const [categories, setCategories] = useState<Category[]>([])
   type CategoryResponse = {
     data: Category[]
@@ -49,10 +49,8 @@ const Categories = () => {
           </div>
         </div>
       </div>
-      <br />
-      <Footer />
     </AppLayout>
   )
 }
 
-export default Categories
+export default Main

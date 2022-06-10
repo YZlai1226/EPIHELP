@@ -13,7 +13,7 @@ const Login = () => {
 
   const { login } = useAuth({
     middleware: 'guest',
-    redirectIfAuthenticated: '/categories'
+    redirectIfAuthenticated: '/main'
   })
 
   const [email, setEmail] = useState('')

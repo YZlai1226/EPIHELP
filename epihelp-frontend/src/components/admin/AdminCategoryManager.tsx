@@ -4,7 +4,8 @@ import { Category } from './../../models/category';
 import AdminEachCategory from './AdminEachCategory'
 
 type CategoryProps = {
-  categories: Category[]
+  categories: Category[],
+  getCategories:() => void
 }
 
 const AdminCategoryManager: React.FC<CategoryProps> = (props) => (
@@ -19,7 +20,7 @@ const AdminCategoryManager: React.FC<CategoryProps> = (props) => (
     </thead>
     <tbody>
       {props.categories.map((category) => (
-        <AdminEachCategory category={category} key={category.id} />
+        <AdminEachCategory category={category} key={category.id} getCategories={props.getCategories}/>
       )
       )}
     </tbody>
