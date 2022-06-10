@@ -37,7 +37,7 @@ const CategoryPage: React.FC = () => {
   return (
     <AppLayout
       header={
-        <h2 className="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 className="font-semibold text-xl text-white leading-tight">
           {categoryData?.name}
         </h2>
       }>
