@@ -29,7 +29,7 @@ const PostForm: React.FC<postFormProps> = (props) => {
       type CategoryResponse = {
         data: Category[]
       };
-      axios.get<CategoryResponse>('/main')
+      axios.get<CategoryResponse>('/categories')
         .then((response) => {
           console.log('here here in post form')
           setCategories(response.data.data)

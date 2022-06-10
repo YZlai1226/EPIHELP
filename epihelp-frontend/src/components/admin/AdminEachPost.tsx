@@ -22,20 +22,17 @@ const AdminEachPost: React.FC<EachPostProps> = (props) => {
     setShowCategory(true)
   }, [])
 
-  // useEffect(() => {
-  //   props.getPosts()
-  //   console.log('123456789')
-  // }, [postData])
-  // console.log('*****', postData)
+  // function LinkToPost(postId: string) {
+  //   window.location.href = '/post/'
+  // }
 
   return (
     <tr>
       <td className="border-separate border border-slate-300 h-24">{props.post.id}</td>
-      {/* <Link to={`/post/${props.post.title}`}> */}
-      <td className="border-separate border border-slate-300 h-24">{props.post.title}</td>
-      {/* <td className="border-separate border border-slate-300 h-24 hover:underline w-1/6">
-        <a href="/legal" className="hover:underline"> {props.post.title}</a>
-      </td> */}
+      {/* <td className="border-separate border border-slate-300 h-24">{props.post.title}</td> */}
+      <td className="border-separate border border-slate-300 h-24 hover:underline">
+        <a href={`/post/${props.post.id}`} className="hover:underline"> {props.post.title}</a>
+      </td>
       <td className="border-separate border border-slate-300 h-24">{props.post.category}</td>
       <td className="border-separate border border-slate-300 h-24">{props.post.author_name}</td>
       <td className="border-separate border border-slate-300 h-24">{props.post.number_of_comments}</td>

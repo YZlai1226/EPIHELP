@@ -7,13 +7,16 @@ import EditCategoryModal from './../../components/Category/EditCategoryModal'
 
 type EachCategoryProps = {
   category: Category,
-  getCategories:() => void
+  getCategories: () => void
 }
 
 const AdminEachCategory: React.FC<EachCategoryProps> = (props) => (
   <tr>
     <td className="border-separate border border-slate-300 h-24">{props.category.id}</td>
-    <td className="border-separate border border-slate-300 h-24">{props.category.name}</td>
+    {/* <td className="border-separate border border-slate-300 h-24">{props.category.name}</td> */}
+    <td className="border-separate border border-slate-300 h-24 hover:underline">
+      <a href={`/category/${props.category.id}`} className="hover:underline"> {props.category.name}</a>
+    </td>
     <td className="border-separate border border-slate-300 h-24">{props.category.description}</td>
     <td className="border-separate border border-slate-300 h-24">
       <Button
