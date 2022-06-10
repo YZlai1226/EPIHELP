@@ -7,26 +7,26 @@ function Home() {
 
   return (
     <div className="relative flex items-top justify-center
-    min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+    min-h-screen bg-gray-100 sm:items-center sm:pt-0">
       <div className="hidden fixed top-0 right-0 px-6 py-4 sm:block">
         {user ?
           <NavLink
-            to="/categories"
+            to="/main"
             className="ml-4 text-sm text-gray-700 underline"
           >
-            Categories
+            Main Page
           </NavLink>
           :
           <>
             <NavLink
               to="/login"
-              className="ml-4 text-sm text-white underline"
+              className="ml-4 text-sm text-blue underline"
             >
               Login
             </NavLink>
             <NavLink
               to="/register"
-              className="ml-4 text-sm text-white underline"
+              className="ml-4 text-sm text-blue underline"
             >
               Register
             </NavLink>

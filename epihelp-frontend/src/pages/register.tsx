@@ -11,7 +11,7 @@ import { Link, NavLink } from 'react-router-dom';
 const Register = () => {
   const { register } = useAuth({
     middleware: 'guest',
-    redirectIfAuthenticated: '/categories'
+    redirectIfAuthenticated: '/main'
   })
 
   const [name, setName] = useState('')
@@ -132,7 +132,7 @@ const Register = () => {
             />
             <span> </span>
             <span>
-              I have read and agree to the <Link to='/cgu'>terms and conditions</Link>.
+              I have read and agree to the <Link style={{color: 'blue'}} to='/cgu'>terms and conditions</Link>.
             </span>
             <div className="flex items-center h-5">
             </div>
